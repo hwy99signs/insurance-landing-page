@@ -50,8 +50,9 @@ export default function App() {
       shortTitle: "Roof",
       desc: "Focused help for storm damage, wear-and-tear disputes, inspections, depreciation, supplements, and roof-related coverage issues.",
       hook: "Learn what is storm damage and what is not.",
-      status: "coming",
-      image: "/images/roof_damage.png",
+      link: "https://www.amazon.com/dp/B0GY8SBXGC/ref=tmm_pap_swatch_0",
+      status: "live",
+      image: "/images/roof_damage_claims.png",
     },
     {
       title: "Water Damage Claims",
@@ -157,20 +158,26 @@ export default function App() {
               Practical guides for homeowners & policyholders
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-7xl mb-6 font-extrabold tracking-tight leading-tight">
-              Protection Starts <br className="hidden sm:block"/>
-              <span className="text-amber-400 underline decoration-amber-400/30 underline-offset-8">With Knowledge.</span>
+              Most Homeowners Get <br className="hidden sm:block"/>
+              <span className="text-amber-400 underline decoration-amber-400/30 underline-offset-8">Underpaid on Insurance Claims.</span>
             </h1>
-            <p className="text-lg sm:text-xl text-slate-300 max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed">
-              The Insurance Claims Guide is a practical book series built to help readers understand claims, document damage properly, and make stronger decisions.
+            <p className="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto lg:mx-0 mb-6 leading-relaxed">
+              Learn how to document damage, understand your policy, and avoid costly mistakes that lead to denied, delayed, or underpaid claims.
             </p>
-            <div className="flex flex-col sm:flex-row flex-wrap justify-center lg:justify-start gap-4">
+            <p className="text-amber-400/90 font-medium mb-10 text-sm sm:text-base italic">
+              Written by an experienced insurance adjuster to help policyholders understand how claims really work.
+            </p>
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center lg:justify-start gap-4 mb-6">
               <a href="#books" className="btn btn-primary px-8 py-4 text-center">
-                Explore the Library
+                View the Books on Amazon
               </a>
               <a href="#waitlist" className="btn btn-secondary px-8 py-4 text-center">
-                Join the Waitlist
+                Get Claim Tips & Updates
               </a>
             </div>
+            <p className="text-slate-400 text-sm font-medium">
+              One mistake in a claim can cost thousands. This guide helps you avoid it.
+            </p>
             
             <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto lg:mx-0">
               <div className="flex items-center justify-center lg:justify-start gap-2 text-sm text-slate-300">
@@ -215,9 +222,9 @@ export default function App() {
             </div>
             <div className="text-center lg:text-left">
               <div className="text-amber-400 font-bold tracking-[0.2em] text-sm uppercase mb-4">Expert Insight</div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl mb-6">Meet the Team</h2>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl mb-6">About the Author</h2>
               <p className="text-lg text-slate-300 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                The Insurance Claims Guide series is authored by <strong>The Insurance Claims Guide Team</strong>, a collective of professionals dedicated to bringing clarity to the often confusing world of property insurance.
+                Written by an experienced insurance adjuster with years of hands-on claims experience, <strong>The Insurance Claims Guide</strong> was created to help homeowners and renters understand what really happens during the claims process—and how to protect themselves financially.
               </p>
               <div className="grid sm:grid-cols-2 gap-6 mb-10 max-w-2xl mx-auto lg:mx-0">
                 {[
@@ -234,7 +241,7 @@ export default function App() {
               </div>
               <div className="p-6 glass rounded-2xl border-l-4 border-l-amber-400 text-left">
                 <p className="text-slate-300 italic text-lg leading-relaxed">
-                  "Our mission is to empower homeowners and renters with the same knowledge the industry experts have, making the claims process fair and transparent for everyone."
+                  "My mission is to empower homeowners and renters with the same knowledge the industry experts have, making the claims process fair and transparent for everyone."
                 </p>
               </div>
             </div>
@@ -247,7 +254,7 @@ export default function App() {
         <div className="absolute top-1/2 left-0 w-96 h-96 bg-amber-400/5 blur-[120px] -z-10" />
         <div className="container">
           <div className="max-w-3xl mb-16 text-center md:text-left">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl mb-6">Confusion in the first 72 hours can cost you thousands.</h2>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl mb-6">The First 72 Hours of a Claim Can Determine Your Entire Outcome.</h2>
             <p className="text-xl text-slate-300 leading-relaxed">
               Insurance language, documentation requirements, and deadlines can overwhelm people fast. This series is built to bring clarity when you need it most.
             </p>
@@ -255,9 +262,9 @@ export default function App() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: <Info size={28}/>, title: "Immediate Clarity", desc: "Know exactly what to document from day one to protect your claim's integrity." },
-              { icon: <HelpCircle size={28}/>, title: "Avoid Pitfalls", desc: "Understand the difference between covered damage and maintenance issues before you file." },
-              { icon: <Clock size={28}/>, title: "Clear Communication", desc: "Learn how to speak to adjusters, vendors, and contractors with confidence and precision." }
+              { icon: <Info size={28}/>, title: "Immediate Clarity", desc: "Know exactly what to document from day one so your claim is taken seriously." },
+              { icon: <HelpCircle size={28}/>, title: "Avoid Pitfalls", desc: "Understand what’s covered vs. what gets denied before you make costly mistakes." },
+              { icon: <Clock size={28}/>, title: "Clear Communication", desc: "Learn how to speak with adjusters and contractors so nothing gets overlooked." }
             ].map((feature, i) => (
               <div key={i} className="glass p-10 rounded-3xl hover:bg-slate-900/80 transition-all duration-300 group hover:-translate-y-2 border border-white/5">
                 <div className="w-14 h-14 bg-amber-400/10 rounded-2xl flex items-center justify-center mb-8 text-amber-400 group-hover:bg-amber-400 group-hover:text-slate-950 transition-colors duration-300 shadow-xl shadow-amber-400/5">
@@ -277,7 +284,7 @@ export default function App() {
           <div className="text-center max-w-3xl mx-auto mb-20">
             <div className="text-amber-400 font-bold tracking-[0.25em] text-sm uppercase mb-4">The series library</div>
             <h2 className="text-4xl sm:text-5xl mb-6 tracking-tight font-extrabold text-white">Guides & Upcoming Releases</h2>
-            <p className="text-slate-400 text-lg sm:text-xl">Find the guide that matches your specific situation. Available now on Amazon or join the waitlist for future titles.</p>
+            <p className="text-slate-400 text-lg sm:text-xl">Choose the guide that matches your situation and start protecting your claim today.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -307,9 +314,14 @@ export default function App() {
                     <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
                     {book.hook}
                   </p>
-                  <p className="text-slate-400 text-sm leading-relaxed mb-8 flex-1">
+                  <p className="text-slate-400 text-sm leading-relaxed mb-4 flex-1">
                     {book.desc}
                   </p>
+                  {book.status === 'coming' && (
+                    <p className="text-amber-400/80 text-[13px] font-medium mb-6 italic">
+                      Join the waitlist to get early access and launch discounts.
+                    </p>
+                  )}
                   
                   <div className="mt-auto pt-6 border-t border-white/5">
                     {book.status === 'live' ? (
@@ -326,7 +338,7 @@ export default function App() {
                         href="#waitlist" 
                         className="btn btn-secondary w-full gap-2"
                       >
-                        Get Notified <Clock size={18} />
+                        Join the Waitlist <Clock size={18} />
                       </a>
                     )}
                   </div>
@@ -366,9 +378,9 @@ export default function App() {
                    className="rounded-2xl w-full mb-8 shadow-inner grayscale opacity-40 group-hover:opacity-60 transition duration-700"
                 />
                 <div className="text-center relative z-20">
-                  <h3 className="text-2xl sm:text-3xl mb-4 font-bold text-white">Value Beyond the Pages</h3>
+                  <h3 className="text-2xl sm:text-3xl mb-4 font-bold text-white">These aren’t just books.</h3>
                   <p className="text-slate-400 leading-relaxed mb-8 text-lg">
-                    Each guide includes proprietary worksheets, inspection checklists, and communication templates used by professionals to keep claims on track.
+                    Each guide includes real-world worksheets, documentation checklists, and communication templates used by professionals to keep claims on track and prevent underpayment.
                   </p>
                   <a href="#books" className="text-amber-400 font-bold flex items-center justify-center gap-2 hover:gap-4 transition-all text-lg group">
                     See what's inside <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
@@ -389,9 +401,9 @@ export default function App() {
             
             <div className="max-w-3xl mx-auto text-center">
               <div className="text-amber-400 font-bold tracking-[0.25em] text-sm uppercase mb-6">Stay Informed</div>
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl mb-8 font-extrabold tracking-tight">Join the Series Waitlist</h2>
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl mb-8 font-extrabold tracking-tight">Get Claim Tips Before You Need Them</h2>
               <p className="text-lg sm:text-xl text-slate-300 mb-12 leading-relaxed">
-                Be the first to know when <strong>Roof Damage</strong>, <strong>Water Damage</strong>, <strong>ALE</strong>, and <strong>Contents</strong> guides are released. Get early access and series discounts.
+                Be the first to access new guides, claim strategies, and updates that can help you avoid costly mistakes.
               </p>
               
               <WaitlistForm />
@@ -405,9 +417,9 @@ export default function App() {
         <div className="container">
           <div className="glass p-8 sm:p-16 rounded-[2.5rem] border border-white/5 text-center relative overflow-hidden">
             <div className="absolute inset-0 bg-amber-400/[0.02] -z-10" />
-            <h2 className="text-3xl sm:text-4xl mb-6 font-bold text-white">Need personalized claim help?</h2>
+            <h2 className="text-3xl sm:text-4xl mb-6 font-bold text-white">Need help with a current claim?</h2>
             <p className="text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed text-lg">
-              While we currently focus on providing educational resources through our book series, we are exploring personalized consulting and claims support services for the future.
+              We are preparing to offer personalized claim guidance and consulting services. Join the waitlist to be notified when this becomes available.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <div className="badge badge-soon p-4 px-8 rounded-2xl italic text-sm border border-amber-400/20 bg-amber-400/5">
