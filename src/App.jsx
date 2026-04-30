@@ -215,9 +215,9 @@ export default function App() {
             <div className="relative group mx-auto w-full max-w-md">
               <div className="absolute -inset-1 bg-gradient-to-r from-amber-400 to-amber-600 rounded-3xl blur opacity-25 group-hover:opacity-40 transition duration-500" />
               <img 
-                src="/images/author.png" 
-                alt="The Insurance Claims Guide Team" 
-                className="relative rounded-3xl w-full aspect-square object-cover shadow-2xl" 
+                src="/images/homeowners_book.jpg" 
+                alt="The Insurance Claims Guide" 
+                className="relative rounded-3xl w-full shadow-2xl" 
               />
             </div>
             <div className="text-center lg:text-left">
