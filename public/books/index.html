@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Books | The Insurance Claims Guide</title>
+  <meta name="description" content="Explore The Insurance Claims Guide book series for homeowners, renters and property owners. Purchase available books directly from Amazon." />
+  <link rel="canonical" href="https://www.theinsuranceclaimsguide.com/books/" />
+  <style>
+    :root {
+      --navy:#081b35;
+      --navy-2:#102b50;
+      --navy-3:#183b68;
+      --gold:#d9a62e;
+      --gold-light:#f4c44a;
+      --cream:#f8f5ec;
+      --white:#fff;
+      --text:#172235;
+      --muted:#667085;
+      --shadow:0 18px 45px rgba(4,20,40,.12);
+      --radius:20px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Arial,Helvetica,sans-serif;color:var(--text);background:#f6f8fb;line-height:1.6}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1180px,calc(100% - 40px));margin:0 auto}
+    .site-header{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.97);border-bottom:1px solid rgba(8,27,53,.08);backdrop-filter:blur(10px)}
+    .header-inner{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+    .brand{display:flex;align-items:center;gap:13px;min-width:260px}
+    .brand-logo-wrap{width:58px;height:58px;flex:0 0 58px}
+    .brand-logo{width:58px;height:58px;object-fit:contain;transform:scale(1.25)}
+    .fallback-logo{width:58px;height:58px;border-radius:50%;border:3px solid var(--gold);background:var(--navy);color:var(--gold-light);display:none;place-items:center;font-weight:900}
+    .brand-copy strong{display:block;color:var(--navy);font-size:.96rem;line-height:1.15}
+    .brand-copy span{color:var(--gold);font-size:.7rem;text-transform:uppercase;letter-spacing:.09em;font-weight:800}
+    .desktop-nav{display:flex;align-items:center;gap:23px}
+    .desktop-nav a{color:var(--navy);font-size:.88rem;font-weight:800}
+    .desktop-nav a:hover{color:var(--gold)}
+    .desktop-nav .active{color:#9b6e00;border-bottom:2px solid var(--gold);padding-bottom:4px}
+    .header-cta{background:var(--gold);color:var(--navy);padding:12px 18px;border-radius:999px;font-weight:900;font-size:.86rem;white-space:nowrap}
+    .menu-button{width:46px;height:46px;display:none;align-items:center;justify-content:center;background:var(--navy);color:white;border:0;border-radius:10px;cursor:pointer;font-size:1.4rem}
+    .mobile-menu{display:none;background:var(--navy);padding:8px 20px 20px}
+    .mobile-menu.open{display:block}
+    .mobile-menu a{display:block;padding:14px 4px;color:white;font-weight:800;border-bottom:1px solid rgba(255,255,255,.12)}
+    .mobile-menu .active{color:var(--gold-light)}
+
+    .books-hero{background:radial-gradient(circle at 85% 20%,rgba(217,166,46,.20),transparent 28%),linear-gradient(135deg,#06162d 0%,#0d2b52 62%,#163e70 100%);color:white;padding:82px 0 76px}
+    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:54px;align-items:center}
+    .eyebrow{color:var(--gold-light);font-size:.8rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase;margin-bottom:12px}
+    .books-hero h1{font-size:clamp(2.7rem,6vw,5.1rem);line-height:1.0;margin-bottom:20px}
+    .books-hero h1 span{color:var(--gold-light)}
+    .lead{font-size:clamp(1.08rem,2vw,1.28rem);color:#e7edf6;max-width:760px;margin-bottom:26px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:13px 22px;border-radius:999px;font-weight:900;transition:.2s ease;border:2px solid transparent}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-gold{background:var(--gold-light);color:var(--navy)}
+    .btn-outline{border-color:rgba(255,255,255,.52);color:white}
+    .hero-logo-panel{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);padding:28px;border-radius:26px;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.22)}
+    .hero-logo-panel img{width:230px;height:230px;object-fit:contain;margin:0 auto 18px}
+    .hero-logo-panel h3{color:var(--gold-light);font-size:1.4rem;margin-bottom:6px}
+    .hero-logo-panel p{color:#e7edf6}
+
+    .book-section{padding:86px 0}
+    .section-title{text-align:center;max-width:850px;margin:0 auto 48px}
+    .section-title .eyebrow{color:var(--gold)}
+    .section-title h2{font-size:clamp(2rem,4vw,3.4rem);line-height:1.1;color:var(--navy);margin-bottom:14px}
+    .section-title p{color:var(--muted);font-size:1.06rem}
+    .book-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+    .book-card{background:white;border:1px solid #e0e6ee;border-radius:24px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;position:relative}
+    .book-art{height:390px;background:linear-gradient(145deg,#e8edf4,#fff);display:flex;align-items:center;justify-content:center;padding:24px;position:relative}
+    .book-art img{height:100%;width:100%;object-fit:contain;filter:drop-shadow(0 18px 22px rgba(4,20,40,.20))}
+    .status{position:absolute;top:18px;right:18px;background:var(--navy);color:var(--gold-light);font-size:.72rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;padding:8px 11px;border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+    .status.live{background:var(--gold);color:var(--navy)}
+    .book-body{padding:26px;display:flex;flex-direction:column;flex:1}
+    .book-body h3{color:var(--navy);font-size:1.35rem;line-height:1.2;margin-bottom:10px}
+    .hook{font-weight:900;color:#9a6c00;margin-bottom:12px}
+    .book-body p{color:var(--muted);margin-bottom:20px}
+    .book-actions{margin-top:auto;display:grid;gap:10px}
+    .amazon-btn{background:var(--gold-light);color:var(--navy);padding:13px 16px;border-radius:12px;font-weight:900;text-align:center}
+    .amazon-btn:hover{background:var(--gold)}
+    .coming-btn{background:#eef2f7;color:#7a8493;padding:13px 16px;border-radius:12px;font-weight:900;text-align:center;cursor:default}
+    .amazon-note{font-size:.78rem;color:#8a93a1;text-align:center}
+
+    .book-purpose{background:var(--cream);padding:82px 0}
+    .purpose-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .purpose-card{background:white;border-radius:18px;padding:28px;border-top:5px solid var(--gold);box-shadow:0 10px 30px rgba(4,20,40,.07)}
+    .purpose-card h3{color:var(--navy);margin-bottom:9px}
+    .purpose-card p{color:var(--muted)}
+
+    .site-return{background:var(--navy);color:white;padding:72px 0;text-align:center}
+    .site-return h2{font-size:clamp(2rem,4vw,3.3rem);line-height:1.1;margin-bottom:15px}
+    .site-return p{color:#dce5ef;max-width:760px;margin:0 auto 26px;font-size:1.08rem}
+
+    .disclaimer{padding:42px 0;background:#eef2f7}
+    .disclaimer-box{border-left:5px solid var(--gold);padding:23px 26px;background:white;border-radius:12px;color:var(--muted);font-size:.91rem}
+    .disclaimer-box strong{color:var(--navy)}
+    .footer{background:#041327;color:#bcc8d8;padding:36px 0}
+    .footer-grid{display:flex;justify-content:space-between;gap:30px;align-items:center}
+    .footer strong{color:white}
+    .footer a{color:var(--gold-light);font-weight:900}
+    .footer-links{display:flex;gap:18px;flex-wrap:wrap}
+
+    @media(max-width:1040px){.desktop-nav,.header-cta{display:none}.menu-button{display:flex}.hero-grid{grid-template-columns:1fr}.hero-logo-panel{max-width:500px}.book-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:700px){.container{width:min(100% - 28px,1180px)}.brand{min-width:0}.brand-logo-wrap,.brand-logo,.fallback-logo{width:48px;height:48px;flex-basis:48px}.brand-copy strong{font-size:.8rem}.brand-copy span{font-size:.59rem}.books-hero{padding:62px 0}.book-section{padding:62px 0}.book-grid,.purpose-grid{grid-template-columns:1fr}.book-art{height:360px}.hero-actions{display:grid}.btn{width:100%}.footer-grid{flex-direction:column;align-items:flex-start}}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/" aria-label="Return to The Insurance Claims Guide home page">
+        <div class="brand-logo-wrap">
+          <img src="/icg-logo.png" alt="The Insurance Claims Guide" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+          <div class="fallback-logo">ICG</div>
+        </div>
+        <div class="brand-copy"><strong>The Insurance Claims Guide</strong><span>Your Roadmap to Recovery</span></div>
+      </a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/#ai">AI Companion</a>
+        <a href="/#help">Claim Help</a>
+        <a href="/#resources">Resources</a>
+        <a class="active" href="/books/">Our Books</a>
+        <a href="/#human">Human Help</a>
+      </nav>
+      <a class="header-cta" href="/#contact">Do You Need Help With a Claim?</a>
+      <button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">☰</button>
+    </div>
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+      <a href="/">Home</a>
+      <a href="/#ai">AI Claim Companion</a>
+      <a href="/#help">Claim Help</a>
+      <a href="/#resources">Resources</a>
+      <a class="active" href="/books/">Our Books</a>
+      <a href="/#human">Human Help</a>
+      <a href="/#contact">Do You Need Help With a Claim?</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="books-hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">The Insurance Claims Guide Book Series</p>
+          <h1>Claim Knowledge You Can <span>Keep on Your Shelf.</span></h1>
+          <p class="lead">Our books turn complicated property-claim topics into practical, plain-language guidance you can reference before, during and after a loss. Choose the guide that matches your situation, then purchase it directly from Amazon.</p>
+          <div class="hero-actions">
+            <a class="btn btn-gold" href="#available-books">See the Books</a>
+            <a class="btn btn-outline" href="/">Return to the ICG Main Site</a>
+          </div>
+        </div>
+        <div class="hero-logo-panel">
+          <img src="/icg-logo.png" alt="The Insurance Claims Guide official logo" />
+          <h3>Your Roadmap to Recovery</h3>
+          <p>Be Prepared. Be Informed. Get Results.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="book-section" id="available-books">
+      <div class="container">
+        <div class="section-title">
+          <p class="eyebrow">Our Books</p>
+          <h2>Find the Guide That Fits Your Claim.</h2>
+          <p>Available titles can be purchased on Amazon. Additional focused guides are being prepared for release as the series grows.</p>
+        </div>
+
+        <div class="book-grid">
+          <article class="book-card">
+            <div class="book-art"><span class="status live">Available</span><img src="/images/homeowners_book.jpg" alt="Homeowners Dwelling Claims book cover" /></div>
+            <div class="book-body">
+              <h3>Homeowners Dwelling Claims</h3>
+              <div class="hook">Avoid costly claim mistakes in the first 72 hours.</div>
+              <p>A practical guide to understanding coverage basics, documentation, estimates, settlement issues, and the steps homeowners should take after property damage.</p>
+              <div class="book-actions"><a class="amazon-btn" href="https://www.amazon.com/dp/B0GL4X5LGR" target="_blank" rel="noopener noreferrer">Buy on Amazon →</a><div class="amazon-note">Amazon opens in a new tab.</div></div>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <div class="book-art"><span class="status live">Available</span><img src="/images/renters_book.png" alt="Renters Dwelling Claims book cover" /></div>
+            <div class="book-body">
+              <h3>Renters Dwelling Claims</h3>
+              <div class="hook">Prepare, document, and understand your renter claim.</div>
+              <p>Clear guidance for renters handling personal property damage, temporary living issues, claim documentation, communication, and common claim pitfalls.</p>
+              <div class="book-actions"><a class="amazon-btn" href="https://www.amazon.com/dp/B0GR98BZQD" target="_blank" rel="noopener noreferrer">Buy on Amazon →</a><div class="amazon-note">Amazon opens in a new tab.</div></div>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <div class="book-art"><span class="status live">Available</span><img src="/images/roof_damage_claims.png" alt="Roof Damage Claims book cover" /></div>
+            <div class="book-body">
+              <h3>Roof Damage Claims</h3>
+              <div class="hook">Learn what is storm damage and what is not.</div>
+              <p>Focused help for storm damage, wear-and-tear disputes, inspections, depreciation, supplements, and roof-related coverage issues.</p>
+              <div class="book-actions"><a class="amazon-btn" href="https://www.amazon.com/dp/B0GY8SBXGC/ref=tmm_pap_swatch_0" target="_blank" rel="noopener noreferrer">Buy on Amazon →</a><div class="amazon-note">Amazon opens in a new tab.</div></div>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <div class="book-art"><span class="status">Coming Soon</span><img src="/images/water_damage.png" alt="Water Damage Claims book cover" /></div>
+            <div class="book-body">
+              <h3>Water Damage Claims</h3>
+              <div class="hook">Understand mitigation, dry-out, and payment issues.</div>
+              <p>Detailed explanations of sudden and accidental water losses, mitigation, dry-out, mold concerns, exclusions, and scope review.</p>
+              <div class="book-actions"><div class="coming-btn">Coming Soon</div></div>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <div class="book-art"><span class="status">Coming Soon</span><img src="/images/recovery.png" alt="Additional Living Expenses guide cover" /></div>
+            <div class="book-body">
+              <h3>Additional Living Expenses</h3>
+              <div class="hook">Know what housing and extra living costs may be covered.</div>
+              <p>Understand loss-of-use coverage, temporary housing, meal reimbursement, receipts, deadlines, and documentation requirements.</p>
+              <div class="book-actions"><div class="coming-btn">Coming Soon</div></div>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <div class="book-art"><span class="status">Coming Soon</span><img src="/images/hero_bg.png" alt="Contents and Personal Property Claims guide artwork" /></div>
+            <div class="book-body">
+              <h3>Contents &amp; Personal Property</h3>
+              <div class="hook">Build a stronger inventory and avoid under-documenting your loss.</div>
+              <p>How to inventory, value, document, and recover your personal belongings after a fire, water loss, theft, or other covered event.</p>
+              <div class="book-actions"><div class="coming-btn">Coming Soon</div></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="book-purpose">
+      <div class="container">
+        <div class="section-title">
+          <p class="eyebrow">Why the Series Exists</p>
+          <h2>Use the Books. Use the Site. Ask Questions.</h2>
+          <p>The books are one part of The Insurance Claims Guide. When a book raises a question or your actual claim becomes confusing, come back to the main ICG site for claim education, resources, AI assistance as available, and human consultation.</p>
+        </div>
+        <div class="purpose-grid">
+          <article class="purpose-card"><h3>Plain-Language Education</h3><p>Insurance terminology and claim processes are explained in language homeowners and renters can actually use.</p></article>
+          <article class="purpose-card"><h3>Situation-Specific Guides</h3><p>Focused books let you go deeper into the type of claim or coverage issue you are facing.</p></article>
+          <article class="purpose-card"><h3>Help Beyond the Book</h3><p>Your book does not have to be the end of the conversation. Return to ICG when you need additional help understanding what comes next.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="site-return">
+      <div class="container">
+        <p class="eyebrow">The Insurance Claims Guide</p>
+        <h2>Have a Claim Question the Book Doesn't Answer?</h2>
+        <p>Return to the main Insurance Claims Guide site to explore the ICG AI Claim Companion, claim resources, educational guidance and human consultation options.</p>
+        <a class="btn btn-gold" href="/">Go to the ICG Main Site →</a>
+      </div>
+    </section>
+
+    <section class="disclaimer">
+      <div class="container"><div class="disclaimer-box"><strong>Educational Resource:</strong> The Insurance Claims Guide provides general educational information and claim-process guidance. It does not act as a public adjuster, negotiate insurance claims on behalf of policyholders, determine insurance coverage, or provide legal advice. Amazon is a third-party retailer; availability and pricing are controlled by Amazon.</div></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div><strong>The Insurance Claims Guide</strong><br />Your Roadmap to Recovery</div>
+      <div class="footer-links"><a href="https://www.theinsuranceclaimsguide.com/">www.theinsuranceclaimsguide.com</a><span>•</span><a href="https://www.erantpropertyservices.com/">www.erantpropertyservices.com</a></div>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton=document.getElementById('menuButton');
+    const mobileMenu=document.getElementById('mobileMenu');
+    menuButton.addEventListener('click',function(){const isOpen=mobileMenu.classList.toggle('open');menuButton.setAttribute('aria-expanded',isOpen);menuButton.textContent=isOpen?'✕':'☰';});
+    document.querySelectorAll('.mobile-menu a').forEach(function(link){link.addEventListener('click',function(){mobileMenu.classList.remove('open');menuButton.setAttribute('aria-expanded','false');menuButton.textContent='☰';});});
+  </script>
+</body>
+</html>
