@@ -1,13 +1,443 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>insurance-landing-page</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>The Insurance Claims Guide | Be Prepared. Be Informed. Get Results.</title>
+
+  <meta
+    name="description"
+    content="The Insurance Claims Guide helps homeowners, property owners, homebuyers and others better understand insurance claims, claim payments, documentation, estimates and the recovery process."
+  />
+
+  <link rel="canonical" href="https://www.theinsuranceclaimsguide.com/" />
+
+  <style>
+    :root {
+      --navy: #081b35;
+      --navy-2: #102b50;
+      --navy-3: #183b68;
+      --gold: #d9a62e;
+      --gold-light: #f4c44a;
+      --cream: #f8f5ec;
+      --white: #ffffff;
+      --text: #172235;
+      --muted: #667085;
+      --line: #d9dee7;
+      --shadow: 0 18px 45px rgba(4, 20, 40, 0.12);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 0; }
+    body { font-family: Arial, Helvetica, sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    section[id] { scroll-margin-top: 20px; }
+    .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+    .eyebrow { color: var(--gold); font-size: 0.8rem; font-weight: 900; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 12px; }
+    .section { padding: 92px 0; }
+    .section-title { max-width: 820px; margin-bottom: 42px; }
+    .section-title h2 { font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.12; color: var(--navy); margin-bottom: 16px; }
+    .section-title p { color: var(--muted); font-size: 1.05rem; }
+
+    .site-header { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,0.97); border-bottom: 1px solid rgba(8,27,53,0.08); backdrop-filter: blur(10px); }
+    .header-inner { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .brand { display: flex; align-items: center; gap: 13px; min-width: 260px; }
+    .brand-logo-wrap { width: 58px; height: 58px; flex: 0 0 58px; }
+    .brand-logo { width: 58px; height: 58px; object-fit: contain; transform: scale(1.25); }
+    .fallback-logo { width: 58px; height: 58px; border-radius: 50%; border: 3px solid var(--gold); background: var(--navy); color: var(--gold-light); display: none; place-items: center; font-weight: 900; font-size: 1.15rem; box-shadow: inset 0 0 0 3px var(--navy), inset 0 0 0 4px var(--gold); }
+    .brand-copy strong { display: block; color: var(--navy); font-size: 0.96rem; line-height: 1.15; }
+    .brand-copy span { color: var(--gold); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.09em; font-weight: 800; }
+    .desktop-nav { display: flex; align-items: center; gap: 22px; }
+    .desktop-nav a { color: var(--navy); font-size: 0.86rem; font-weight: 800; }
+    .desktop-nav a:hover { color: var(--gold); }
+    .desktop-nav .books-nav { color: #a57200; }
+    .header-cta { background: var(--gold); color: var(--navy); padding: 12px 18px; border-radius: 999px; font-weight: 900; font-size: 0.86rem; white-space: nowrap; }
+    .menu-button { width: 46px; height: 46px; display: none; align-items: center; justify-content: center; background: var(--navy); color: white; border: 0; border-radius: 10px; cursor: pointer; font-size: 1.4rem; }
+    .mobile-menu { display: none; background: var(--navy); padding: 8px 20px 20px; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; padding: 14px 4px; color: white; font-weight: 800; border-bottom: 1px solid rgba(255,255,255,0.12); }
+    .mobile-menu .books-nav { color: var(--gold-light); }
+
+    .hero { background: radial-gradient(circle at 85% 20%, rgba(217,166,46,0.18), transparent 29%), linear-gradient(135deg, #06162d 0%, #0d2b52 62%, #163e70 100%); color: white; padding: 96px 0 90px; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 60px; align-items: center; }
+    .hero h1 { font-size: clamp(2.7rem, 6vw, 5.3rem); line-height: 0.98; max-width: 820px; margin-bottom: 22px; }
+    .hero h1 span { color: var(--gold-light); }
+    .hero-lead { font-size: clamp(1.08rem, 2vw, 1.28rem); color: #e8eef7; max-width: 740px; margin-bottom: 28px; }
+    .hero-tagline { color: var(--gold-light); font-weight: 900; font-size: 1.1rem; margin-bottom: 16px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 13px 22px; border-radius: 999px; font-weight: 900; transition: 0.2s ease; cursor: pointer; border: 2px solid transparent; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-gold { background: var(--gold-light); color: var(--navy); }
+    .btn-outline { border-color: rgba(255,255,255,0.52); color: white; }
+    .hero-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); padding: 30px; border-radius: 26px; backdrop-filter: blur(8px); box-shadow: 0 24px 60px rgba(0,0,0,0.22); }
+    .hero-seal { width: 210px; height: 210px; margin: 0 auto 26px; object-fit: contain; }
+    .hero-fallback { width: 210px; height: 210px; border-radius: 50%; border: 7px solid var(--gold); margin: 0 auto 26px; display: none; place-items: center; text-align: center; color: var(--gold-light); font-size: 3rem; font-weight: 900; box-shadow: inset 0 0 0 5px var(--navy), inset 0 0 0 8px var(--gold); }
+    .hero-card h3 { color: var(--gold-light); font-size: 1.45rem; margin-bottom: 10px; text-align: center; }
+    .hero-card p { color: #e7edf6; text-align: center; }
+
+    .trust-strip { background: var(--gold); color: var(--navy); padding: 21px 0; }
+    .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; text-align: center; font-weight: 900; font-size: 0.93rem; }
+    .cards-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .cards-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .card { background: white; border: 1px solid #e1e6ed; border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); }
+    .card-number { width: 42px; height: 42px; border-radius: 50%; background: var(--navy); color: var(--gold-light); display: grid; place-items: center; font-weight: 900; margin-bottom: 18px; }
+    .card h3 { color: var(--navy); font-size: 1.16rem; margin-bottom: 11px; }
+    .card p { color: var(--muted); }
+
+    .ai-section { background: var(--cream); }
+    .feature-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 50px; align-items: center; }
+    .feature-panel { background: var(--navy); color: white; padding: 38px; border-radius: 26px; box-shadow: var(--shadow); }
+    .feature-panel .eyebrow { color: var(--gold-light); }
+    .feature-panel h2 { font-size: clamp(2rem, 4vw, 3.3rem); line-height: 1.08; margin-bottom: 18px; }
+    .feature-panel p { color: #dfe7f2; margin-bottom: 22px; }
+    .trial-box { background: rgba(244,196,74,0.13); border: 1px solid rgba(244,196,74,0.42); border-radius: 16px; padding: 20px; margin-top: 24px; }
+    .trial-box strong { color: var(--gold-light); display: block; margin-bottom: 5px; }
+    .check-list { list-style: none; display: grid; gap: 14px; }
+    .check-list li { position: relative; padding-left: 30px; color: var(--text); }
+    .check-list li::before { content: "✓"; position: absolute; left: 0; color: var(--gold); font-weight: 900; }
+
+    .help-section { background: var(--white); }
+    .help-card { position: relative; overflow: hidden; }
+    .help-card::after { content: ""; position: absolute; height: 5px; left: 0; right: 0; bottom: 0; background: var(--gold); }
+    .help-card a { color: var(--gold); display: inline-block; margin-top: 15px; font-weight: 900; }
+
+    .resources { background: #f3f6fa; }
+    .resource-card { min-height: 250px; display: flex; flex-direction: column; }
+    .resource-card .resource-label { color: var(--gold); font-weight: 900; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; }
+    .resource-card a { margin-top: auto; padding-top: 20px; color: var(--navy); font-weight: 900; }
+    .resource-card.books-feature { border: 2px solid rgba(217,166,46,0.7); }
+    .resource-card.books-feature a { color: #9b6e00; }
+
+    .human-help { background: var(--navy); color: white; }
+    .human-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 50px; align-items: center; }
+    .human-help h2 { color: white; font-size: clamp(2.1rem, 4vw, 3.3rem); line-height: 1.08; margin-bottom: 18px; }
+    .human-help p { color: #dae4f0; }
+    .human-card { background: white; color: var(--text); padding: 30px; border-radius: 22px; }
+    .human-card h3 { color: var(--navy); margin-bottom: 12px; }
+
+    .audience-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .audience-card { background: var(--cream); border-radius: 16px; padding: 24px; border-top: 4px solid var(--gold); }
+    .audience-card h3 { color: var(--navy); margin-bottom: 8px; }
+
+    .disclaimer { padding: 50px 0; background: #eef2f7; }
+    .disclaimer-box { border-left: 5px solid var(--gold); padding: 25px 28px; background: white; border-radius: 12px; }
+    .disclaimer-box h3 { color: var(--navy); margin-bottom: 10px; }
+    .disclaimer-box p { color: var(--muted); font-size: 0.92rem; }
+
+    .final-cta { background: linear-gradient(rgba(8,27,53,0.92), rgba(8,27,53,0.92)), linear-gradient(135deg, #122f55, #071a31); color: white; text-align: center; padding: 90px 0; }
+    .final-cta h2 { font-size: clamp(2.4rem, 5vw, 4.2rem); line-height: 1.05; margin-bottom: 18px; }
+    .final-cta p { max-width: 720px; margin: 0 auto 28px; color: #dce5f1; font-size: 1.08rem; }
+
+    .contact-section { background: white; }
+    .contact-grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 32px; }
+    .contact-panel { background: var(--navy); color: white; border-radius: 22px; padding: 38px; }
+    .contact-panel h3 { font-size: 2rem; line-height: 1.15; margin-bottom: 14px; }
+    .contact-panel p { color: #dce5ef; }
+    .contact-link { display: block; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.14); font-weight: 800; }
+    .contact-link span { color: var(--gold-light); }
+    .form-card { border: 1px solid #dfe4eb; border-radius: 22px; padding: 34px; box-shadow: var(--shadow); }
+    .form-card h3 { color: var(--navy); margin-bottom: 20px; }
+    .form-grid { display: grid; gap: 17px; }
+    .field label { display: block; color: var(--navy); font-weight: 900; font-size: 0.86rem; margin-bottom: 6px; }
+    .field input, .field textarea { width: 100%; border: 1px solid #ccd4de; border-radius: 10px; padding: 13px 14px; outline: none; }
+    .field textarea { min-height: 130px; resize: vertical; }
+    .field input:focus, .field textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(217,166,46,0.14); }
+    .form-note { color: var(--muted); font-size: 0.8rem; margin-top: 12px; }
+
+    .footer { background: #041327; color: #bcc8d8; padding: 36px 0; }
+    .footer-grid { display: flex; justify-content: space-between; gap: 30px; align-items: center; }
+    .footer strong { color: white; }
+    .footer a { color: var(--gold-light); font-weight: 900; }
+    .footer-links { display: flex; gap: 18px; flex-wrap: wrap; align-items: center; }
+
+    @media (max-width: 1080px) {
+      .desktop-nav, .header-cta { display: none; }
+      .menu-button { display: flex; }
+    }
+    @media (max-width: 980px) {
+      .hero-grid, .feature-grid, .human-grid, .contact-grid { grid-template-columns: 1fr; }
+      .hero-card { max-width: 560px; }
+      .cards-4, .audience-grid { grid-template-columns: repeat(2, 1fr); }
+      .cards-3 { grid-template-columns: 1fr; }
+      .trust-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 650px) {
+      .container { width: min(100% - 28px, 1180px); }
+      .header-inner { min-height: 74px; }
+      .brand { min-width: 0; }
+      .brand-logo-wrap, .brand-logo, .fallback-logo { width: 48px; height: 48px; flex-basis: 48px; }
+      .brand-copy strong { font-size: 0.8rem; }
+      .brand-copy span { font-size: 0.59rem; }
+      .hero { padding: 68px 0 62px; }
+      .hero h1 { font-size: 2.65rem; }
+      .hero-actions { display: grid; }
+      .btn { width: 100%; }
+      .section { padding: 68px 0; }
+      .cards-4, .audience-grid, .trust-grid { grid-template-columns: 1fr; }
+      .hero-card, .feature-panel, .contact-panel, .form-card { padding: 26px; }
+      .hero-seal, .hero-fallback { width: 170px; height: 170px; }
+      .footer-grid { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/" aria-label="The Insurance Claims Guide home">
+        <div class="brand-logo-wrap">
+          <img src="/icg-logo.png" alt="The Insurance Claims Guide" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+          <div class="fallback-logo">ICG</div>
+        </div>
+        <div class="brand-copy">
+          <strong>The Insurance Claims Guide</strong>
+          <span>Your Roadmap to Recovery</span>
+        </div>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="#about">What ICG Does</a>
+        <a href="#ai">AI Companion</a>
+        <a href="#help">Claim Help</a>
+        <a href="#resources">Resources</a>
+        <a class="books-nav" href="/books/">Our Books</a>
+        <a href="#human">Human Help</a>
+      </nav>
+
+      <a class="header-cta" href="#contact">Do You Need Help With a Claim?</a>
+      <button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">☰</button>
+    </div>
+
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+      <a href="#about">What ICG Does</a>
+      <a href="#ai">AI Claim Companion</a>
+      <a href="#help">Claim Help</a>
+      <a href="#resources">Resources</a>
+      <a class="books-nav" href="/books/">Our Books</a>
+      <a href="#human">Human Help</a>
+      <a href="#contact">Do You Need Help With a Claim?</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow" style="color:#f4c44a;">The Insurance Claims Guide</p>
+          <h1>Insurance Claims Can Be Confusing. <span>Understanding Them Shouldn't Be.</span></h1>
+          <p class="hero-tagline">Be Prepared. Be Informed. Get Results.</p>
+          <p class="hero-lead">The Insurance Claims Guide helps you understand the insurance claim process, the language being used, the documents in front of you, and the questions you should be asking — so you can make informed decisions throughout your recovery.</p>
+          <div class="hero-actions">
+            <a class="btn btn-gold" href="#help">I Need Help Understanding My Claim</a>
+            <a class="btn btn-outline" href="#ai">Explore the AI Claim Companion</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <img src="/icg-logo.png" alt="The Insurance Claims Guide official logo" class="hero-seal" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+          <div class="hero-fallback">ICG</div>
+          <h3>Your Roadmap to Recovery</h3>
+          <p>Plain-language insurance education, claim guidance, practical resources and tools designed to help you better understand what happens before, during and after a property claim.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-strip">
+      <div class="container trust-grid">
+        <div>Plain-Language Claim Education</div>
+        <div>AI-Powered Claim Guidance</div>
+        <div>Books & Practical Resources</div>
+        <div>Human Consultation Available</div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-title">
+          <p class="eyebrow">What ICG Does</p>
+          <h2>Helping You Understand the Claim — Not Just Survive It.</h2>
+          <p>Insurance claims involve unfamiliar terminology, estimates, depreciation, deductibles, payment documents, deadlines and decisions. ICG was created to make that information easier to understand.</p>
+        </div>
+        <div class="cards-3">
+          <article class="card"><div class="card-number">1</div><h3>Understand the Language</h3><p>Learn what terms such as ACV, RCV, recoverable depreciation, deductibles, supplements, ALE, appraisal and other claim terms actually mean.</p></article>
+          <article class="card"><div class="card-number">2</div><h3>Understand the Documents</h3><p>Better understand estimates, payment summaries, coverage documents, claim correspondence and the information you may be asked to provide.</p></article>
+          <article class="card"><div class="card-number">3</div><h3>Understand Your Next Step</h3><p>Learn what questions to ask, what records to keep, how to document your property and how to stay organized throughout the claim.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section ai-section" id="ai">
+      <div class="container feature-grid">
+        <div class="feature-panel">
+          <p class="eyebrow">Coming to ICG</p>
+          <h2>The ICG AI Claim Companion</h2>
+          <p>A virtual claim-education companion designed to help you ask better questions, understand claim terminology and organize the information surrounding your property claim.</p>
+          <div class="trial-box"><strong>30-Day Free Trial at Launch</strong>Put ICG to work on your actual claim situation before deciding whether you want to continue.</div>
+          <div class="hero-actions"><a class="btn btn-gold" href="mailto:thehomeownersclaimsguide@erantpropertyservices.com?subject=ICG%2030-Day%20Free%20Trial%20Interest">Join the Launch List</a></div>
+        </div>
+        <div>
+          <p class="eyebrow">Ask. Understand. Organize.</p>
+          <div class="section-title" style="margin-bottom:28px;"><h2>A Claim Assistant Built Around Real Questions.</h2></div>
+          <ul class="check-list">
+            <li>Ask questions about insurance claim terminology.</li>
+            <li>Understand ACV, RCV and recoverable depreciation.</li>
+            <li>Learn how deductibles affect claim payments.</li>
+            <li>Understand common estimate sections and line items.</li>
+            <li>Organize claim documents and important information.</li>
+            <li>Track multiple claims and properties.</li>
+            <li>Prepare questions for your insurer, contractor or other professional.</li>
+            <li>Access educational guidance throughout the life of the claim.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section help-section" id="help">
+      <div class="container">
+        <div class="section-title">
+          <p class="eyebrow">What Do You Need Help With?</p>
+          <h2>Start With the Problem You're Trying to Solve.</h2>
+          <p>You do not need to know the correct insurance terminology before asking for help. Start with what is confusing you.</p>
+        </div>
+        <div class="cards-4">
+          <article class="card help-card"><h3>My Claim Payment Doesn't Make Sense</h3><p>Learn how ACV, RCV, depreciation and deductibles may affect the amount shown on your claim payment.</p><a href="#contact">Help Me Understand My Payment →</a></article>
+          <article class="card help-card"><h3>I Don't Understand the Estimate</h3><p>Learn what an insurance estimate may contain and how to read important sections without getting lost in technical language.</p><a href="#contact">Help Me Understand My Estimate →</a></article>
+          <article class="card help-card"><h3>I Don't Know What to Document</h3><p>Learn practical ways to photograph, organize and preserve information related to your property and claim.</p><a href="#resources">Show Me the Resources →</a></article>
+          <article class="card help-card"><h3>I Need Someone to Explain This to Me</h3><p>When self-service information is not enough, request human educational consultation.</p><a href="#human">Learn About Human Help →</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section resources" id="resources">
+      <div class="container">
+        <div class="section-title">
+          <p class="eyebrow">Books & Resources</p>
+          <h2>Insurance Education You Can Keep, Reference and Use.</h2>
+          <p>ICG is more than a website. Our growing resource library is designed to help homeowners and property owners prepare before a loss and understand what happens after one.</p>
+        </div>
+        <div class="cards-4">
+          <article class="card resource-card books-feature"><p class="resource-label">Book Series</p><h3>The Insurance Claims Guide Books</h3><p>Practical guides that break complex insurance and property-claim topics into understandable information.</p><a href="/books/">Explore Our Books →</a></article>
+          <article class="card resource-card"><p class="resource-label">Homebuyer Resource</p><h3>New Homebuyer's Edition</h3><p>Learn what to inspect, what coverage questions to ask and what insurance issues may matter before purchasing a home.</p><a href="#contact">Learn More →</a></article>
+          <article class="card resource-card"><p class="resource-label">Practical Tools</p><h3>Checklists & Claim Resources</h3><p>Property documentation tools, pre-loss checklists, claim organization resources and educational references.</p><a href="#contact">Explore Resources →</a></article>
+          <article class="card resource-card"><p class="resource-label">Growing Knowledge Library</p><h3>ICG Knowledge Vault</h3><p>A structured insurance-education knowledge base designed to support the ICG AI Claim Companion and future learning tools.</p><a href="#ai">Explore the AI Companion →</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section human-help" id="human">
+      <div class="container human-grid">
+        <div>
+          <p class="eyebrow" style="color:#f4c44a;">Human Consultation</p>
+          <h2>Sometimes You Don't Need Another Article. You Need a Conversation.</h2>
+          <p>ICG will offer paid educational consultations for people who want help understanding claim terminology, documents, estimates, timelines, documentation practices and the overall claim process.</p>
+        </div>
+        <div class="human-card">
+          <h3>Human Help May Include:</h3>
+          <ul class="check-list">
+            <li>Explaining insurance terminology.</li>
+            <li>Explaining ACV, RCV and depreciation.</li>
+            <li>Reviewing claim documents for educational purposes.</li>
+            <li>Helping organize claim records.</li>
+            <li>Explaining common estimate sections.</li>
+            <li>Helping prepare questions for the appropriate professional.</li>
+          </ul>
+          <div style="margin-top:24px;"><a class="btn btn-gold" href="mailto:thehomeownersclaimsguide@erantpropertyservices.com?subject=ICG%20Human%20Consultation%20Request">Request Human Consultation</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-title"><p class="eyebrow">Who ICG Is For</p><h2>Built for People Who Need Insurance Information to Make Sense.</h2></div>
+        <div class="audience-grid">
+          <article class="audience-card"><h3>Homeowners</h3><p>Understand your property claim, payments, documentation and next steps.</p></article>
+          <article class="audience-card"><h3>Homebuyers</h3><p>Learn what property conditions and insurance questions may matter before closing.</p></article>
+          <article class="audience-card"><h3>Landlords & Investors</h3><p>Organize information across multiple properties and historical claims.</p></article>
+          <article class="audience-card"><h3>Contractors & Property Professionals</h3><p>Access educational resources that help explain common insurance claim terminology and processes.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="disclaimer">
+      <div class="container"><div class="disclaimer-box"><h3>Important Scope of Service</h3><p>The Insurance Claims Guide provides general educational information, organizational assistance and claim-process guidance. ICG does not act as a public adjuster, does not negotiate insurance claims on behalf of policyholders, does not determine insurance coverage, and does not provide legal advice. Questions involving coverage disputes, legal rights, claim negotiation or professional representation should be directed to an appropriately licensed professional.</p></div></div>
+    </section>
+
+    <section class="final-cta">
+      <div class="container">
+        <p class="eyebrow" style="color:#f4c44a;">Your Roadmap to Recovery</p>
+        <h2>Do You Need Help Understanding an Insurance Claim?</h2>
+        <p>Start with the question, document, payment or claim issue that is confusing you. ICG is being built to help you understand what you are looking at and what questions you should ask next.</p>
+        <a class="btn btn-gold" href="#contact">Tell Us What You Need Help With</a>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-panel">
+          <p class="eyebrow" style="color:#f4c44a;">Contact ICG</p>
+          <h3>Start With What You Don't Understand.</h3>
+          <p>You do not need to know the correct insurance terminology. Tell us what situation you are dealing with and what part of the claim is confusing you.</p>
+          <a class="contact-link" href="mailto:thehomeownersclaimsguide@erantpropertyservices.com?subject=Insurance%20Claim%20Question"><strong>Insurance Claim Questions</strong> — <span>Email The Insurance Claims Guide</span></a>
+          <a class="contact-link" href="mailto:thehomeownersclaimsguide@erantpropertyservices.com?subject=ICG%20AI%20Claim%20Companion"><strong>AI Claim Companion</strong> — <span>Join the Launch List</span></a>
+          <a class="contact-link" href="mailto:thehomeownersclaimsguide@erantpropertyservices.com?subject=ICG%20Human%20Consultation"><strong>Need Human Help?</strong> — <span>Request Consultation</span></a>
+          <p class="eyebrow" style="color:#f4c44a;text-align:center;margin-top:32px;margin-bottom:0;">Be Prepared. Be Informed. Get Results.</p>
+        </div>
+
+        <form class="form-card" id="contactForm">
+          <h3>Tell Us What You Need Help With</h3>
+          <div class="form-grid">
+            <div class="field"><label for="name">Your Name</label><input id="name" name="name" required autocomplete="name" /></div>
+            <div class="field"><label for="email">Email Address</label><input id="email" name="email" type="email" required autocomplete="email" /></div>
+            <div class="field"><label for="subject">What do you need help with?</label><input id="subject" name="subject" placeholder="Example: I don't understand my claim payment" required /></div>
+            <div class="field"><label for="message">Tell us what is happening</label><textarea id="message" name="message" placeholder="Briefly describe the question, document or claim issue you are trying to understand." required></textarea></div>
+            <button class="btn btn-gold" type="submit">Send My Question</button>
+          </div>
+          <p class="form-note">This form opens your email application so you can review the message before sending.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div><strong>The Insurance Claims Guide</strong><br />Your Roadmap to Recovery</div>
+      <div class="footer-links">
+        <a href="/books/">Our Books</a>
+        <span>•</span>
+        <span>An ERANT Property Services venture — <a href="https://www.erantpropertyservices.com/">Visit ERANT Property Services</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.getElementById("menuButton");
+    const mobileMenu = document.getElementById("mobileMenu");
+    menuButton.addEventListener("click", function () {
+      const isOpen = mobileMenu.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", isOpen);
+      menuButton.textContent = isOpen ? "✕" : "☰";
+    });
+    document.querySelectorAll(".mobile-menu a").forEach(function(link) {
+      link.addEventListener("click", function() {
+        mobileMenu.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.textContent = "☰";
+      });
+    });
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const subject = document.getElementById("subject").value.trim();
+      const message = document.getElementById("message").value.trim();
+      const mailSubject = "ICG Website Inquiry - " + subject;
+      const mailBody = "Name: " + name + "\n" + "Email: " + email + "\n\n" + "What I need help with:\n" + subject + "\n\n" + "Details:\n" + message;
+      window.location.href = "mailto:thehomeownersclaimsguide@erantpropertyservices.com" + "?subject=" + encodeURIComponent(mailSubject) + "&body=" + encodeURIComponent(mailBody);
+    });
+  </script>
+</body>
 </html>
