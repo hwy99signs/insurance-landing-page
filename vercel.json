@@ -1,0 +1,31 @@
+{
+  "redirects": [
+    {
+      "source": "/books",
+      "destination": "/books/",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "homeownerclaimsguide.com"
+        }
+      ],
+      "destination": "https://www.theinsuranceclaimsguide.com/books/",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.homeownerclaimsguide.com"
+        }
+      ],
+      "destination": "https://www.theinsuranceclaimsguide.com/books/",
+      "permanent": true
+    }
+  ]
+}
