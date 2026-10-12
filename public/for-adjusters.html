@@ -226,6 +226,58 @@
 .pa-example h3{margin:0 0 8px;color:#0d2b45;font-size:1.02rem}
 .pa-example p{margin:0 0 8px}
 .pa-example p:last-child{margin-bottom:0}
+
+/* ===== Header as the opening statement — big brand (owner direction, 2026-10-12) ===== */
+.brand-logo-wrap,.brand-logo,.fallback-logo{width:76px;height:76px;flex-basis:76px}
+.brand{gap:15px}
+.brand-copy strong{font-size:1.24rem;line-height:1.12}
+.brand-copy span{font-size:.74rem;letter-spacing:.08em}
+.header-inner{min-height:96px}
+@media (max-width:1420px){
+  .desktop-nav{gap:10px}
+  .desktop-nav a{font-size:.82rem}
+  .header-cta{padding:10px 13px;font-size:.78rem}
+  .brand-copy strong{font-size:1.15rem}
+  .brand-copy span{font-size:.7rem}
+}
+@media (max-width:720px){
+  .header-inner{flex-wrap:wrap;row-gap:9px;min-height:0;padding-top:13px;padding-bottom:11px}
+  .brand{flex:1 1 100%;gap:12px;order:1}
+  .brand-logo-wrap,.brand-logo,.fallback-logo{width:80px;height:80px;flex-basis:80px}
+  .brand-copy strong{font-size:1.32rem;line-height:1.1}
+  .brand-copy span{font-size:.68rem;letter-spacing:.05em}
+  .lang-tab{order:2;font-size:13.5px;margin-left:2px}
+  .menu-button{order:3;margin-left:auto;width:44px;height:44px}
+}
+
+/* ===== Header statement — desktop polish (2026-10-12) ===== */
+@media (min-width:1081px){
+  .brand-copy strong{white-space:nowrap}
+  .brand-logo-wrap,.brand-logo,.fallback-logo{width:70px;height:70px;flex-basis:70px}
+}
+@media (min-width:1081px) and (max-width:1420px){
+  .brand-copy strong{font-size:1.04rem}
+  .brand-copy span{font-size:.66rem;letter-spacing:.06em}
+  .desktop-nav{gap:9px}
+  .desktop-nav a{font-size:.8rem}
+}
+
+/* ===== RESCALE — bigger type, room by restructuring, never by shrinking (owner standard, 2026-10-12) ===== */
+.desktop-nav a{font-size:.95rem}
+.desktop-nav{gap:20px}
+.header-cta{font-size:.88rem;padding:12px 18px}
+.brand-copy strong{font-size:1.24rem}
+.brand-copy span{font-size:.74rem;letter-spacing:.08em}
+@media (min-width:1081px){
+  .header-inner{flex-wrap:wrap;row-gap:2px;padding-top:10px}
+  .desktop-nav{order:5;flex:1 1 100%;justify-content:space-between;padding:6px 0 12px}
+}
+@media (max-width:720px){
+  html{font-size:18px}
+  .lang-tab{font-size:15px}
+  .pa-example p,.pa-example li{font-size:1.04rem;line-height:1.65}
+  .pa-fig td{font-size:1.04rem}
+}
 </style>
 </head>
 <body>

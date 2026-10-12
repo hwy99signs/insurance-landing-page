@@ -231,6 +231,65 @@
 .pa-fig td:last-child{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 .pa-fig .tot td{border-top:2px solid #0d2b45;font-weight:800;color:#0d2b45;padding-top:7px}
 .pa-fig .sub td{color:#5a6a7a;font-size:.92rem}
+
+/* ===== Header as the opening statement — big brand (owner direction, 2026-10-12) ===== */
+.brand-logo-wrap,.brand-logo,.fallback-logo{width:76px;height:76px;flex-basis:76px}
+.brand{gap:15px}
+.brand-copy strong{font-size:1.24rem;line-height:1.12}
+.brand-copy span{font-size:.74rem;letter-spacing:.08em}
+.header-inner{min-height:96px}
+@media (max-width:1420px){
+  .desktop-nav{gap:10px}
+  .desktop-nav a{font-size:.82rem}
+  .header-cta{padding:10px 13px;font-size:.78rem}
+  .brand-copy strong{font-size:1.15rem}
+  .brand-copy span{font-size:.7rem}
+}
+@media (max-width:720px){
+  .header-inner{flex-wrap:wrap;row-gap:9px;min-height:0;padding-top:13px;padding-bottom:11px}
+  .brand{flex:1 1 100%;gap:12px;order:1}
+  .brand-logo-wrap,.brand-logo,.fallback-logo{width:80px;height:80px;flex-basis:80px}
+  .brand-copy strong{font-size:1.32rem;line-height:1.1}
+  .brand-copy span{font-size:.68rem;letter-spacing:.05em}
+  .lang-tab{order:2;font-size:13.5px;margin-left:2px}
+  .menu-button{order:3;margin-left:auto;width:44px;height:44px}
+}
+
+/* ===== Header statement — desktop polish (2026-10-12) ===== */
+@media (min-width:1081px){
+  .brand-copy strong{white-space:nowrap}
+  .brand-logo-wrap,.brand-logo,.fallback-logo{width:70px;height:70px;flex-basis:70px}
+}
+@media (min-width:1081px) and (max-width:1420px){
+  .brand-copy strong{font-size:1.04rem}
+  .brand-copy span{font-size:.66rem;letter-spacing:.06em}
+  .desktop-nav{gap:9px}
+  .desktop-nav a{font-size:.8rem}
+}
+
+/* ===== RESCALE — bigger type, room by restructuring, never by shrinking (owner standard, 2026-10-12) ===== */
+.desktop-nav a{font-size:.95rem}
+.desktop-nav{gap:20px}
+.header-cta{font-size:.88rem;padding:12px 18px}
+.brand-copy strong{font-size:1.24rem}
+.brand-copy span{font-size:.74rem;letter-spacing:.08em}
+@media (min-width:1081px){
+  .header-inner{flex-wrap:wrap;row-gap:2px;padding-top:10px}
+  .desktop-nav{order:5;flex:1 1 100%;justify-content:space-between;padding:6px 0 12px}
+}
+@media (max-width:720px){
+  html{font-size:18px}
+  .lang-tab{font-size:15px}
+  .pa-example p,.pa-example li{font-size:1.04rem;line-height:1.65}
+  .pa-fig td{font-size:1.04rem}
+}
+
+@media (max-width:720px){
+  .pa-fig tr{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+  .pa-fig td:first-child{flex:1 1 auto}
+  .pa-fig td:last-child{flex:0 0 auto}
+  .pa-fig small{color:#5a6a7a}
+}
 </style>
 </head>
 <body>
@@ -310,7 +369,7 @@
 <tr><td>Claim total</td><td>$55,000.00</td></tr>
 <tr><td>Deductible</td><td>&minus; $5,000.00</td></tr>
 <tr><td>Insurance payment</td><td>$50,000.00</td></tr>
-<tr><td>Public adjuster fee (10% of the $55,000 claim total)</td><td>&minus; $5,500.00</td></tr>
+<tr><td>Public adjuster fee<br><small>10% of the $55,000 claim total</small></td><td>&minus; $5,500.00</td></tr>
 <tr class="tot"><td>You receive</td><td>$44,500.00</td></tr>
 <tr class="sub"><td>Your out of pocket</td><td>$10,500.00 (deductible + the fee)</td></tr>
 </table>
