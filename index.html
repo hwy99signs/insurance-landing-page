@@ -166,7 +166,7 @@
       .trust-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 650px) {
-      .container { width: min(100% - 28px, 1180px); }
+      .container { width: min(100% - 44px, 1180px); }
       .header-inner { min-height: 74px; }
       .brand { min-width: 0; }
       .brand-logo-wrap, .brand-logo, .fallback-logo { width: 48px; height: 48px; flex-basis: 48px; }
@@ -294,6 +294,18 @@
 /* Anchor jumps land below the statement header, never under it (2026-10-12) */
 html{scroll-padding-top:190px}
 @media (max-width:720px){ html{scroll-padding-top:178px} }
+
+/* Realignment: no page wider than the screen; breathing room at the edges (2026-10-12) */
+.page p a, .page li a, .card a, .pa-example a { overflow-wrap: anywhere; }
+@media (max-width:720px){
+  .wrap{padding-left:24px;padding-right:24px}
+}
+@media (max-width:400px){
+  .brand-copy span{white-space:normal;line-height:1.35}
+}
+
+.wrap a{overflow-wrap:anywhere}
+a[href^="mailto:"]{overflow-wrap:anywhere}
 </style>
 </head>
 
