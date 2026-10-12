@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ICG Claim Roadmap Consultation — Intake (Prototype v2.2)</title>
+<style>
+  :root{--navy:#0e2a47;--gold:#c9a227;--ink:#1c2733;--bg:#f4f6f8;--card:#fff;--line:#d8dee5;--ok:#1e7a46;--warn:#a35b00}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+  header{background:var(--navy);color:#fff;padding:18px 16px}
+  .wrap{max-width:860px;margin:0 auto;padding:0 16px}
+  header .wrap{display:flex;align-items:center;gap:14px}
+  header img{width:56px;height:56px;border-radius:50%;background:#fff;object-fit:contain}
+  header h1{font-size:20px;margin:0;line-height:1.25}
+  header p{margin:4px 0 0;color:#d9e2ec;font-size:13px}
+  .demo{background:#fff3cd;border:1px solid #e3c95f;color:#5c4a00;padding:10px 14px;border-radius:8px;margin:16px auto 0;font-size:13px;max-width:860px}
+  form,.panel{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:18px auto;max-width:860px}
+  fieldset{border:1px solid var(--line);border-radius:8px;margin:0 0 16px;padding:14px}
+  legend{font-weight:700;color:var(--navy);padding:0 6px}
+  label{display:block;font-size:14px;font-weight:600;margin:10px 0 4px}
+  label.check,label.radio{font-weight:400;display:flex;gap:8px;align-items:flex-start;margin:6px 0}
+  input[type=text],input[type=email],input[type=tel],input[type=date],select,textarea{width:100%;padding:9px;border:1px solid var(--line);border-radius:6px;font-size:15px}
+  textarea{min-height:70px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:640px){.row{grid-template-columns:1fr}}
+  .hint{font-size:12px;color:#5a6a7a;margin-top:2px}
+  .tier{border:2px solid var(--line);border-radius:8px;padding:12px;margin:8px 0}
+  .tier strong{color:var(--navy)}
+  button{background:var(--navy);color:#fff;border:0;border-radius:8px;padding:13px 20px;font-size:16px;font-weight:700;cursor:pointer;width:100%}
+  button.secondary{background:#fff;color:var(--navy);border:2px solid var(--navy)}
+  .scope{background:#eef3f8;border-left:4px solid var(--gold);padding:12px 14px;font-size:13px;border-radius:0 8px 8px 0}
+  #result{display:none}
+  #briefText{white-space:pre-wrap;background:#fbfdfe;border:1px solid var(--line);border-radius:8px;padding:14px;font-size:14px}
+  .err{color:#b00020;font-size:13px;display:none}
+  .ok{color:var(--ok);font-weight:600}
+  footer{color:#5a6a7a;font-size:12px;text-align:center;padding:18px}
+  .subpanel{background:#f7fafc;border:1px dashed var(--navy);border-radius:8px;padding:12px;margin:8px 0 12px}
+  .pageCard{background:#fffdf4;border:1px solid var(--gold);border-radius:10px;padding:14px;margin:0 auto 16px;max-width:860px}
+  .pageCard h3{margin:0 0 6px;color:var(--navy)}
+  .photoGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media(max-width:640px){.photoGrid{grid-template-columns:1fr}}
+  .photoSlot{border:1px solid var(--line);border-radius:8px;padding:9px;background:#fff}
+  .photoSlot label{margin-top:0}
+  .thumbs img{width:64px;height:64px;object-fit:cover;border-radius:6px;margin:4px 4px 0 0;border:1px solid var(--line)}
+  .photoNote{font-size:12px;color:var(--ok);font-weight:600}
+  fieldset#mainGate{border:0;padding:0;margin:0;min-width:0}
+  .notice{background:#fdecea;border:2px solid #b00020;border-radius:10px;padding:16px;margin:18px auto 0;max-width:860px}
+  .notice h2{margin:0 0 8px;color:#b00020;font-size:18px}
+  .notice p{font-size:14px;margin:6px 0}
+  .notice .ack{font-weight:700}
+  .countWrap{margin:6px 0 10px 22px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <img src="https://www.theinsuranceclaimsguide.com/icg-logo.png" alt="The Insurance Claims Guide logo">
+    <div>
+      <h1>Claim Roadmap Consultation — Intake</h1>
+      <p>The Insurance Claims Guide · Be Prepared. Be Informed. Get Results.</p>
+    </div>
+  </div>
+</header>
+
+<div class="wrap"><div class="demo"><strong>TEST BUILD — ICG Consultation Intake (v2.7).</strong> This page is open for QA / UX review. The full intake: terms gate, jurisdiction lock-in from the loss address (state + county), Ordinance &amp; Law, flood policy, mortgage holder, HOA, prior claims &amp; prior repairs, and a matching check on every surface. Everything runs on this device — nothing you enter is sent or stored yet.</p>
+  <p><strong>What ICG is:</strong> The Insurance Claims Guide provides plain-language claim <strong>education</strong>, help organizing your claim information and documents, and guidance on the claim process and the questions to ask.</p>
+  <p><strong>What ICG is not:</strong> ICG is <strong>not</strong> a public adjuster and does not negotiate claims, does <strong>not</strong> determine insurance coverage, does <strong>not</strong> provide legal advice, and does not represent you with your insurance company.</p>
+  <label class="check ack"><input type="checkbox" id="ackTop"> ✔️ I acknowledge what ICG is and is not, and I will not put my Social Security number or any other confidential information anywhere in this form. *</label>
+  <button type="button" id="ackSubmit" disabled style="margin-top:10px">Submit</button>
+  <p class="hint">Check the box above, then click <strong>Submit</strong> — this terms box will close and the form will open. This box appears every time the form is opened and must be completed before you can move forward.</p>
+</div>
+<fieldset id="mainGate" disabled>
+  <fieldset>
+    <legend>1 · About you</legend>
+    <div class="row">
+      <div><label for="fullName">Full name *</label><input id="fullName" type="text" autocomplete="name"></div>
+      <div><label for="phone">Mobile phone (for your consultation call) *</label><input id="phone" type="tel" autocomplete="tel"></div>
+    </div>
+    <label for="email">Email *</label><input id="email" type="email" autocomplete="email">
+    <label style="margin-top:14px">Who is completing this intake? *</label>
+    <label class="check"><input type="checkbox" id="iamHolder"> 1. I am the policy holder.</label>
+    <label class="check"><input type="checkbox" id="onBehalf"> 2. I am preparing this on behalf of the policy holder.</label>
+    <div class="subpanel" id="behalfPanel" style="display:none">
+      <p style="background:#fdecea;border:1px solid #b00020;border-radius:8px;padding:10px 12px;margin:0 0 10px"><strong>Note:</strong> For security or confidentiality reasons, if you are NOT the policyholder, ICG MUST first get verbal permission from the policyholder to discuss the claim or the policy with you. That permission is obtained before your consultation call — the claim or the policy will not be discussed with you until the policyholder has given it.</p>
+      <label for="relationship">Relationship to the policy holder *</label>
+      <select id="relationship">
+        <option value="">Choose one…</option>
+        <option>Family</option>
+        <option>Friend</option>
+        <option>Contractor</option>
+        <option>Insurance Agent</option>
+        <option>Public Adjuster</option>
+        <option>Attorney</option>
+        <option>Property Manager</option>
+        <option>Other</option>
+      </select>
+      <label for="relationshipOther">If "Other," please describe the relationship</label>
+      <input id="relationshipOther" type="text">
+      <label for="holderName">Policy holder's full name</label>
+      <input id="holderName" type="text">
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>2 · What happened — timeline</legend>
+    <div class="row">
+      <div><label for="lossDate">Date of loss (best estimate)</label><input id="lossDate" type="date"></div>
+      <div><label for="discovered">When did you discover the damage?</label><input id="discovered" type="text" placeholder="e.g. same day, a week later"></div>
+    </div>
+    <label for="whatHappened">In your own words, what happened? *</label>
+    <textarea id="whatHappened" placeholder="Two or three sentences is plenty. Plain words are fine — you do not need insurance terminology."></textarea>
+  </fieldset>
+
+    <fieldset>
+    <legend>3 · Property and Insurance Coverage</legend>
+    <label>Full property address *</label>
+    <label for="addrStreet">Street address</label><input id="addrStreet" type="text" autocomplete="street-address" placeholder="e.g. 123 Main St">
+    <div class="row">
+      <div><label for="addrCity">City</label><input id="addrCity" type="text"></div>
+      <div><label for="addrUnit">Apt / unit (if any)</label><input id="addrUnit" type="text"></div>
+    </div>
+    <div class="row">
+      <div><label for="state">State</label><input id="state" type="text" placeholder="e.g. Texas"></div>
+      <div><label for="addrZip">ZIP code</label><input id="addrZip" type="text" autocomplete="postal-code"></div>
+    </div>
+    <label for="addrCounty">County</label><input id="addrCounty" type="text" placeholder="e.g. Harris County">
+    <p class="hint">Your county is very important — it guides ICG to your city's regulations and permit requirements for this claim.</p>
+    <div class="subpanel" id="jurisdictionBar" style="display:none;border-left:4px solid var(--gold)">
+      <strong>Jurisdiction locked:</strong> <span id="jurisdictionText"></span>
+      <p class="hint" style="margin:4px 0 0">ICG handles this claim under this state's rules and its Department of Insurance, based on the loss address above. Correct the address if the state is wrong.</p>
+    </div>
+    <label for="propType">Property type</label>
+    <select id="propType"><option value="">Choose one…</option><option>Home I live in</option><option>Rental property I own</option><option>Property I rent</option><option>Condo / townhome</option><option>Other</option></select>
+    <div class="subpanel" id="propOtherWrap" style="display:none">
+      <label for="propTypeOther">Describe the property type *</label>
+      <input id="propTypeOther" type="text" placeholder="e.g. Duplex, manufactured home, mixed-use building…">
+    </div>
+
+    <label for="floors"># of floors</label>
+    <select id="floors">
+      <option value="">Choose one…</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>Other</option>
+    </select>
+    <div class="subpanel" id="floorsOtherWrap" style="display:none">
+      <label for="floorsOther">Enter the # of floors</label>
+      <input id="floorsOther" type="text" placeholder="e.g. 5">
+    </div>
+
+    <label for="insurer">Insurance Company</label>
+    <select id="insurer">
+      <option value="">Choose one…</option>
+      <option>State Farm</option>
+      <option>Allstate</option>
+      <option>USAA</option>
+      <option>Liberty Mutual</option>
+      <option>Farmers Insurance</option>
+      <option>American Family</option>
+      <option>Nationwide</option>
+      <option>Travelers</option>
+      <option>Progressive</option>
+      <option>Chubb</option>
+      <option>Other</option>
+    </select>
+    <div class="subpanel" id="insurerOtherWrap" style="display:none">
+      <label for="insurerOther">Insurance company name</label>
+      <input id="insurerOther" type="text">
+    </div>
+
+    <label for="policyType">Policy type</label>
+    <select id="policyType">
+      <option value="">Choose one…</option>
+      <option>Homeowners</option>
+      <option>Homeowners — Condo</option>
+      <option>Renters</option>
+      <option>Rental Property / Landlord</option>
+      <option>Commercial</option>
+      <option>Manufactured / Mobile Home</option>
+      <option>Flood — NFIP</option>
+      <option>Flood — Private</option>
+      <option>Other</option>
+    </select>
+    <div class="subpanel" id="policyTypeOtherWrap" style="display:none">
+      <label for="policyTypeOther">Describe the policy type</label>
+      <input id="policyTypeOther" type="text">
+    </div>
+    <div class="subpanel" id="policyUploadWrap" style="display:none">
+      <label>Upload a copy of your policy</label>
+      <input type="file" id="policyFile" multiple>
+      <div class="photoNote" data-note-for="policyFile"></div>
+      <p class="hint">The full policy if you have it, or the declarations page. Do not upload anything containing your Social Security number or bank information.</p>
+    </div>
+
+    <label style="margin-top:14px">Coverage limits (list each — from your declarations page, if you know them)</label>
+    <div class="row">
+      <div><label for="covDwelling">Dwelling (Coverage A)</label><input id="covDwelling" type="text" placeholder="e.g. $350,000"></div>
+      <div><label for="covOtherStructures">Other Structures (Coverage B)</label><input id="covOtherStructures" type="text" placeholder="e.g. $35,000"></div>
+    </div>
+    <div class="row">
+      <div><label for="covContents">Contents / Personal Property (Coverage C)</label><input id="covContents" type="text" placeholder="e.g. $175,000"></div>
+      <div><label for="covLossOfUse">Loss of Use (Coverage D)</label><input id="covLossOfUse" type="text" placeholder="e.g. $70,000"></div>
+    </div>
+    <div class="row">
+      <div><label for="covLiability">Personal Liability (Coverage E)</label><input id="covLiability" type="text" placeholder="e.g. $300,000"></div>
+      <div><label for="covMedical">Medical Payments (Coverage F)</label><input id="covMedical" type="text" placeholder="e.g. $5,000"></div>
+    </div>
+    <div class="row">
+      <div><label for="deductible">Deductible</label><input id="deductible" type="text" placeholder="e.g. $2,500 or 1%"></div>
+      <div><label for="deductibleWind">Wind / Hail deductible (if separate)</label><input id="deductibleWind" type="text" placeholder="e.g. 2% or none"></div>
+    </div>
+
+    <label for="olEndorse">Ordinance &amp; Law endorsement (pays extra costs when building codes require upgrades)</label>
+    <select id="olEndorse"><option value="">Choose one…</option><option>Yes</option><option>No</option><option>Don't know</option></select>
+    <div class="subpanel" id="olWrap" style="display:none">
+      <label for="olPct">Ordinance &amp; Law limit</label>
+      <select id="olPct"><option value="">Choose one…</option><option>10% of Dwelling</option><option>25% of Dwelling</option><option>50% of Dwelling</option><option>Other / fixed amount</option><option>Don't know</option></select>
+    </div>
+
+    <label for="floodPolicy">Separate flood insurance policy?</label>
+    <select id="floodPolicy"><option value="">Choose one…</option><option>No</option><option>Yes — NFIP (federal flood program)</option><option>Yes — Private flood</option><option>Don't know</option></select>
+    <div class="subpanel" id="floodWrap" style="display:none">
+      <div class="row">
+        <div><label for="floodInsurer">Flood insurer</label><input id="floodInsurer" type="text"></div>
+        <div><label for="floodPolicyNo">Flood policy number</label><input id="floodPolicyNo" type="text"></div>
+      </div>
+      <p class="hint">Flood claims follow different rules and a strict 60-day sworn proof-of-loss deadline — ICG tracks a flood claim on its own track.</p>
+    </div>
+
+    <label for="mortgage">Is there a mortgage or lienholder on the property?</label>
+    <select id="mortgage"><option value="">Choose one…</option><option>Yes</option><option>No</option></select>
+    <div class="subpanel" id="mortgageWrap" style="display:none">
+      <label for="servicerName">Mortgage company / servicer name</label>
+      <input id="servicerName" type="text" placeholder="As shown on your mortgage statement">
+      <p class="hint">Dwelling claim checks are usually made out to you AND the mortgage company — ICG tracks that process so a check never sits uncashed.</p>
+    </div>
+
+    <label for="hoa">Is the property in a homeowners association (HOA)?</label>
+    <select id="hoa"><option value="">Choose one…</option><option>Yes</option><option>No</option><option>Don't know</option></select>
+    <div class="subpanel" id="hoaWrap" style="display:none">
+      <div class="row">
+        <div><label for="hoaName">HOA name</label><input id="hoaName" type="text"></div>
+        <div><label for="hoaContact">HOA contact (phone or email)</label><input id="hoaContact" type="text"></div>
+      </div>
+      <label for="hoaRules">Any HOA requirements for repairs or appearance that you know of?</label>
+      <textarea id="hoaRules" placeholder="e.g. Shingle color must be approved, siding material rules, fence style rules…"></textarea>
+      <p class="hint">HOA rules can control roofing and siding materials and colors — they matter for matching and for Ordinance &amp; Law. ICG checks the HOA and your city's regulations for this address as part of your claim file.</p>
+    </div>
+
+    <label>Contents with special limits or scheduled items affected? (select all that apply)</label>
+    <label class="check"><input type="checkbox" class="sublimitChk" value="Jewelry / watches"> Jewelry / watches</label>
+    <label class="check"><input type="checkbox" class="sublimitChk" value="Firearms"> Firearms</label>
+    <label class="check"><input type="checkbox" class="sublimitChk" value="Cash / gift cards"> Cash / gift cards</label>
+    <label class="check"><input type="checkbox" class="sublimitChk" value="Electronics / computers"> Electronics / computers</label>
+    <label class="check"><input type="checkbox" class="sublimitChk" value="Business property at home"> Business property at home</label>
+    <label class="check"><input type="checkbox" class="sublimitChk" value="Scheduled / appraised items"> Scheduled / appraised items</label>
+    <label for="sublimitDesc">Describe any of these items (optional)</label>
+    <input id="sublimitDesc" type="text" placeholder="e.g. Engagement ring, scheduled, appraised last year">
+  
+    <div class="subpanel">
+      <strong>Communications so far — with your insurance company</strong>
+    <label for="comms">What has the insurance company told you so far?</label>
+    <textarea id="comms" placeholder="Letters, calls, emails — summarize the latest thing they said."></textarea>
+    <label class="check"><input type="checkbox" id="denialLetter"> I received a denial or partial-denial letter.</label>
+    <label class="check"><input type="checkbox" id="deadlineGiven"> The insurer gave me a deadline (for documents, repairs, or a decision).</label>
+    <label class="check"><input type="checkbox" id="polAsked"> The insurer asked me for a signed proof of loss.</label>
+    <div class="subpanel" id="polWrap" style="display:none">
+      <div class="row">
+        <div><label for="polDate">Date they asked</label><input id="polDate" type="date"></div>
+        <div><label for="polDue">Due date they gave me</label><input id="polDue" type="date"></div>
+      </div>
+      <p class="hint">A proof of loss carries a hard deadline. ICG flags it on your claim so it is never missed.</p>
+    </div>
+    <label class="check"><input type="checkbox" id="euoAsked"> The insurer asked me for a recorded statement or an Examination Under Oath (EUO).</label>
+    <div class="subpanel" id="euoWrap" style="display:none">
+      <div class="row">
+        <div><label for="euoType">Which one?</label>
+          <select id="euoType"><option value="">Choose one…</option><option>Recorded statement</option><option>Examination Under Oath (EUO)</option><option>Both</option><option>Not sure</option></select></div>
+        <div><label for="euoDate">Date scheduled / requested</label><input id="euoDate" type="date"></div>
+      </div>
+      <p class="hint">Sworn statements matter. ICG will explain what to expect before you give one.</p>
+    </div>
+    <label class="check"><input type="checkbox" id="advancePaid"> I received an advance payment from the insurer.</label>
+    <div class="subpanel" id="advanceWrap" style="display:none">
+      <label for="advanceAmt">Advance amount</label>
+      <input id="advanceAmt" type="text" placeholder="e.g. $5,000">
+    </div>
+  
+    </div>
+</fieldset>
+
+  <fieldset>
+    <legend>4 · Type of loss — the peril *</legend>
+    <p class="hint">Choose the peril — the event that caused the damage. (What was damaged comes next, in Section 5.)</p>
+    <label for="cause">Peril</label>
+    <select id="cause">
+      <option value="">Choose one…</option>
+      <option>Fire</option>
+      <option>Smoke</option>
+      <option>Lightning</option>
+      <option>Wind / Hail</option>
+      <option>Water — sudden &amp; accidental (burst pipe, sudden leak, appliance failure)</option>
+      <option>Water — flood / surface water / storm surge</option>
+      <option>Freezing</option>
+      <option>Fallen tree or falling object</option>
+      <option>Weight of ice, snow or sleet</option>
+      <option>Theft</option>
+      <option>Vandalism / malicious mischief</option>
+      <option>Vehicle impact</option>
+      <option>Electrical / power surge</option>
+      <option>Explosion</option>
+      <option>Riot / civil commotion</option>
+      <option>Other peril</option>
+      <option>Not sure</option>
+    </select>
+    <label class="check"><input type="checkbox" id="living"> The home is not safely livable right now (or may not be soon).</label>
+    <label class="check"><input type="checkbox" id="stillLeaking"> Damage is still getting worse (active leak, open roof, etc.).</label>
+  </fieldset>
+
+  <fieldset>
+    <legend>5 · Damaged areas — select all that apply *</legend>
+    <div class="areaItem">
+      <label class="check"><input type="checkbox" class="areaChk elevChk" value="Roof"> Roof</label>
+      <div class="subpanel" id="elevpanel-roof" style="display:none">
+        <label class="check"><input type="checkbox" class="elevMatchChk" id="elevmatch-roof"> Does this surface have a <strong>non-uniform (mismatched) appearance</strong> — a different color, material, or pattern than the rest of the roof?</label>
+        <div id="elevmatchwrap-roof" style="display:none"><label>Describe the mismatch</label><input type="text" id="elevmatchdesc-roof" placeholder="e.g. One slope was re-shingled and is darker than the others"></div>
+        <label>Do you have photos of the Roof?</label>
+        <label class="radio"><input type="radio" name="elevhas-roof" value="Yes"> Yes</label>
+        <label class="radio"><input type="radio" name="elevhas-roof" value="No"> No</label>
+        <div id="elevupload-roof" style="display:none">
+          <label>Please upload photos of the Roof</label>
+          <input type="file" id="elevfile-roof" accept="image/*" multiple>
+          <div class="photoNote" data-note-for="elevfile-roof"></div>
+          <div class="thumbs" data-thumbs-for="elevfile-roof"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="areaItem">
+      <label class="check"><input type="checkbox" class="areaChk elevChk" value="Front elevation"> Front elevation</label>
+      <div class="subpanel" id="elevpanel-front-elevation" style="display:none">
+        <label class="check"><input type="checkbox" class="elevMatchChk" id="elevmatch-front-elevation"> Does this surface have a <strong>non-uniform (mismatched) appearance</strong> — a different color, material, or pattern than the rest of the elevation?</label>
+        <div id="elevmatchwrap-front-elevation" style="display:none"><label>Describe the mismatch</label><input type="text" id="elevmatchdesc-front-elevation" placeholder="e.g. Replacement siding panels are a lighter shade"></div>
+        <label>Do you have photos of the Front elevation?</label>
+        <label class="radio"><input type="radio" name="elevhas-front-elevation" value="Yes"> Yes</label>
+        <label class="radio"><input type="radio" name="elevhas-front-elevation" value="No"> No</label>
+        <div id="elevupload-front-elevation" style="display:none">
+          <label>Please upload photos of the Front elevation</label>
+          <input type="file" id="elevfile-front-elevation" accept="image/*" multiple>
+          <div class="photoNote" data-note-for="elevfile-front-elevation"></div>
+          <div class="thumbs" data-thumbs-for="elevfile-front-elevation"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="areaItem">
+      <label class="check"><input type="checkbox" class="areaChk elevChk" value="Back elevation"> Back elevation</label>
+      <div class="subpanel" id="elevpanel-back-elevation" style="display:none">
+        <label class="check"><input type="checkbox" class="elevMatchChk" id="elevmatch-back-elevation"> Does this surface have a <strong>non-uniform (mismatched) appearance</strong> — a different color, material, or pattern than the rest of the elevation?</label>
+        <div id="elevmatchwrap-back-elevation" style="display:none"><label>Describe the mismatch</label><input type="text" id="elevmatchdesc-back-elevation" placeholder="e.g. Replacement siding panels are a lighter shade"></div>
+        <label>Do you have photos of the Back elevation?</label>
+        <label class="radio"><input type="radio" name="elevhas-back-elevation" value="Yes"> Yes</label>
+        <label class="radio"><input type="radio" name="elevhas-back-elevation" value="No"> No</label>
+        <div id="elevupload-back-elevation" style="display:none">
+          <label>Please upload photos of the Back elevation</label>
+          <input type="file" id="elevfile-back-elevation" accept="image/*" multiple>
+          <div class="photoNote" data-note-for="elevfile-back-elevation"></div>
+          <div class="thumbs" data-thumbs-for="elevfile-back-elevation"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="areaItem">
+      <label class="check"><input type="checkbox" class="areaChk elevChk" value="Left elevation"> Left elevation</label>
+      <div class="subpanel" id="elevpanel-left-elevation" style="display:none">
+        <label class="check"><input type="checkbox" class="elevMatchChk" id="elevmatch-left-elevation"> Does this surface have a <strong>non-uniform (mismatched) appearance</strong> — a different color, material, or pattern than the rest of the elevation?</label>
+        <div id="elevmatchwrap-left-elevation" style="display:none"><label>Describe the mismatch</label><input type="text" id="elevmatchdesc-left-elevation" placeholder="e.g. Replacement siding panels are a lighter shade"></div>
+        <label>Do you have photos of the Left elevation?</label>
+        <label class="radio"><input type="radio" name="elevhas-left-elevation" value="Yes"> Yes</label>
+        <label class="radio"><input type="radio" name="elevhas-left-elevation" value="No"> No</label>
+        <div id="elevupload-left-elevation" style="display:none">
+          <label>Please upload photos of the Left elevation</label>
+          <input type="file" id="elevfile-left-elevation" accept="image/*" multiple>
+          <div class="photoNote" data-note-for="elevfile-left-elevation"></div>
+          <div class="thumbs" data-thumbs-for="elevfile-left-elevation"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="areaItem">
+      <label class="check"><input type="checkbox" class="areaChk elevChk" value="Right elevation"> Right elevation</label>
+      <div class="subpanel" id="elevpanel-right-elevation" style="display:none">
+        <label class="check"><input type="checkbox" class="elevMatchChk" id="elevmatch-right-elevation"> Does this surface have a <strong>non-uniform (mismatched) appearance</strong> — a different color, material, or pattern than the rest of the elevation?</label>
+        <div id="elevmatchwrap-right-elevation" style="display:none"><label>Describe the mismatch</label><input type="text" id="elevmatchdesc-right-elevation" placeholder="e.g. Replacement siding panels are a lighter shade"></div>
+        <label>Do you have photos of the Right elevation?</label>
+        <label class="radio"><input type="radio" name="elevhas-right-elevation" value="Yes"> Yes</label>
+        <label class="radio"><input type="radio" name="elevhas-right-elevation" value="No"> No</label>
+        <div id="elevupload-right-elevation" style="display:none">
+          <label>Please upload photos of the Right elevation</label>
+          <input type="file" id="elevfile-right-elevation" accept="image/*" multiple>
+          <div class="photoNote" data-note-for="elevfile-right-elevation"></div>
+          <div class="thumbs" data-thumbs-for="elevfile-right-elevation"></div>
+        </div>
+      </div>
+    </div>
+
+    <label class="check"><input type="checkbox" class="areaChk" id="areaInterior" value="Interior"> Interior</label>
+
+    <div class="subpanel" id="roomPicker" style="display:none">
+      <strong>Interior — what is damaged inside the home? Select all that apply.</strong>
+      <p class="hint">The ceiling is part of the interior, so it is listed here with the rooms. A page will be created below for each item you select — for its damage description and photos.</p>
+      <label class="check"><input type="checkbox" class="roomChk" value="Ceiling"> Ceiling</label>
+      <label class="check"><input type="checkbox" class="roomChk" value="Living Room"> Living Room</label>
+      <label class="check"><input type="checkbox" class="roomChk" value="Family Room / Den"> Family Room / Den</label>
+      <label class="check"><input type="checkbox" class="roomChk" value="Kitchen"> Kitchen</label>
+      <label class="check"><input type="checkbox" class="roomChk" value="Dining Room"> Dining Room</label>
+      <label class="check"><input type="checkbox" class="roomChk" value="Primary Bedroom"> Primary Bedroom</label>
+      <label class="check"><input type="checkbox" class="roomChk" value="Bedroom"> Bedroom</label>
+      <label class="check"><input type="checkbox" class="roomChk" value="Primary Bathroom"> Primary Bathroom</label>
+      <label class="check"><input type="checkbox" class="roomChk" value="Bathroom"> Bathroom</label>
+      <label class="check"><input type="checkbox" class="roomChk" value="Hallway"> Hallway</label>
+      <label class="check"><input type="checkbox" class="roomChk" value="Foyer / Entry"> Foyer / Entry</label>
+      <label class="check"><input type="checkbox" class="roomChk" value="Laundry Room"> Laundry Room</label>
+      <label class="check"><input type="checkbox" class="roomChk" value="Office / Study"> Office / Study</label>
+      <label class="check"><input type="checkbox" class="roomChk" value="Closet"> Closet</label>
+      <label class="check"><input type="checkbox" class="roomChk" value="Pantry"> Pantry</label>
+      <label class="check"><input type="checkbox" class="roomChk" value="Attic"> Attic</label>
+      <label class="check"><input type="checkbox" class="roomChk" value="Basement"> Basement</label>
+      <label class="check"><input type="checkbox" class="roomChk" value="Garage (interior)"> Garage (interior)</label>
+      <label class="check"><input type="checkbox" class="roomChk" value="Other Room"> Other Room</label>
+    </div>
+  </fieldset>
+
+  <div id="roomPages"></div>
+
+  <fieldset>
+    <legend>6 · Other structures &amp; fence</legend>
+    <label>Are there other structures damaged (besides the home itself)? *</label>
+    <label class="radio"><input type="radio" name="otherStruct" value="No" checked> No</label>
+    <label class="radio"><input type="radio" name="otherStruct" value="Yes"> Yes</label>
+
+    <div class="subpanel" id="structPicker" style="display:none">
+      <strong>Which structures? Select all that apply.</strong>
+      <p class="hint">A page will be created below for each structure — description and photo uploads, same as the room pages.</p>
+      <label class="check"><input type="checkbox" class="structChk" value="Detached Garage"> Detached Garage</label>
+      <label class="check"><input type="checkbox" class="structChk" value="Shed"> Shed</label>
+      <label class="check"><input type="checkbox" class="structChk" value="Barn"> Barn</label>
+      <label class="check"><input type="checkbox" class="structChk" value="Gazebo"> Gazebo</label>
+      <label class="check"><input type="checkbox" class="structChk" value="Pergola"> Pergola</label>
+      <label class="check"><input type="checkbox" class="structChk" value="Pool House"> Pool House</label>
+      <label class="check"><input type="checkbox" class="structChk" value="Guest House / ADU"> Guest House / ADU</label>
+      <label class="check"><input type="checkbox" class="structChk" value="Workshop"> Workshop</label>
+      <label class="check"><input type="checkbox" class="structChk" value="Carport"> Carport</label>
+      <label class="check"><input type="checkbox" class="structChk" value="Deck / Porch"> Deck / Porch</label>
+      <label class="check"><input type="checkbox" class="structChk" value="Greenhouse"> Greenhouse</label>
+      <label class="check"><input type="checkbox" class="structChk" value="Storage Building"> Storage Building</label>
+      <label class="check"><input type="checkbox" class="structChk" value="Other Structure"> Other Structure</label>
+    </div>
+
+    <label style="margin-top:16px">Is there a fence, and is it damaged?</label>
+    <label class="radio"><input type="radio" name="fence" value="No fence / not damaged" checked> No fence / fence not damaged</label>
+    <label class="radio"><input type="radio" name="fence" value="Yes"> Yes — fence is damaged</label>
+
+    <div class="subpanel" id="fenceDetails" style="display:none">
+      <label>Is the fence shared with a neighbor?</label>
+      <label class="radio"><input type="radio" name="fenceShared" value="Yes — shared"> Yes — shared</label>
+      <label class="radio"><input type="radio" name="fenceShared" value="No — not shared"> No — not shared</label>
+      <label class="radio"><input type="radio" name="fenceShared" value="Not sure"> Not sure</label>
+      <label for="fenceType">Fence type</label>
+      <select id="fenceType">
+        <option value="">Choose one…</option>
+        <option>Wood — privacy</option>
+        <option>Wood — picket</option>
+        <option>Wood — split rail / ranch</option>
+        <option>Chain link</option>
+        <option>Vinyl / PVC</option>
+        <option>Wrought iron / metal</option>
+        <option>Aluminum</option>
+        <option>Brick / stone</option>
+        <option>Composite</option>
+        <option>Other</option>
+      </select>
+      <label for="fenceDesc">Describe the fence damage</label>
+      <textarea id="fenceDesc" placeholder="e.g. Two panels down on the back run, gate leaning, approx. length affected if you know it."></textarea>
+      <label class="check"><input type="checkbox" id="fenceMatch"> Does the fence have a <strong>non-uniform (mismatched) appearance</strong> anywhere — a different color, material, or pattern than the rest?</label>
+      <div id="fenceMatchWrap" style="display:none"><label>Describe the mismatch</label><input type="text" id="fenceMatchDesc" placeholder="e.g. One run was replaced with a different style of panel"></div>
+      <label>Do you have photos of the fence damage?</label>
+      <label class="radio"><input type="radio" name="fenceHasPhotos" value="Yes"> Yes</label>
+      <label class="radio"><input type="radio" name="fenceHasPhotos" value="No"> No</label>
+      <div id="fenceUploadWrap" style="display:none">
+        <label>Please upload photos of the fence damage</label>
+        <input type="file" id="fencePhotos" accept="image/*" multiple>
+        <div class="photoNote" data-note-for="fencePhotos"></div>
+        <div class="thumbs" data-thumbs-for="fencePhotos"></div>
+      </div>
+    </div>
+  </fieldset>
+
+  <div id="structPages"></div>
+
+  <fieldset>
+    <legend>7 · Claim status</legend>
+    <label for="filed">Have you filed a claim?</label>
+    <select id="filed"><option value="">Choose one…</option><option>Yes — claim is open</option><option>Yes — claim was denied</option><option>Yes — claim was closed / paid</option><option>Not yet — deciding whether to file</option><option>Not sure</option></select>
+    <div class="row">
+      <div><label for="claimNo">Claim number</label><input id="claimNo" type="text"></div>
+      <div><label for="adjusterVisit">Has an adjuster inspected?</label>
+        <select id="adjusterVisit"><option value="">Choose one…</option><option>Yes</option><option>Scheduled, not yet</option><option>No</option><option>Desk review only (photos)</option></select></div>
+    </div>
+  </fieldset>
+
+  
+
+  <fieldset>
+    <legend>7B · Prior claims &amp; prior repairs — full disclosure</legend>
+    <p class="hint">Insurance companies keep records of prior claims and often call new damage "pre-existing." Disclosing everything here protects you — ICG plans around it instead of being surprised by it.</p>
+    <label for="priorCount">Prior insurance claims — on this property, or by you on any property</label>
+    <select id="priorCount"><option value="0">None</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4 or more</option></select>
+    <div id="priorClaimBlocks"></div>
+    <label for="priorRepairs">Repairs done WITHOUT an insurance claim (paid yourself, or by a prior owner that you know of)</label>
+    <select id="priorRepairs"><option value="">Choose one…</option><option>Yes</option><option>No</option><option>Don't know</option></select>
+    <div class="subpanel" id="priorRepairsWrap" style="display:none">
+      <label for="priorRepairsDesc">Describe those repairs</label>
+      <textarea id="priorRepairsDesc" placeholder="What was repaired, roughly when, who did the work, and whether any warranty paperwork exists."></textarea>
+    </div>
+    <label class="check"><input type="checkbox" id="unrepairedDamage"> There is damage on this property from a PRIOR event that was never repaired.</label>
+  </fieldset>
+
+  <fieldset>
+    <legend>8 · Documents you have</legend>
+    <p class="hint">Check everything you have on hand — each item you check opens a tab to <strong>upload a copy</strong> of that document. Missing items become your document checklist; they do not disqualify you.</p>
+
+    <div class="docItem">
+      <label class="check"><input type="checkbox" class="doc" data-doc="photos" value="Photos / video of the damage"> Photos / video of the damage</label>
+      <div class="subpanel" id="docupload-photos" style="display:none"><label>Upload a copy — Photos / video of the damage</label><input type="file" id="docfile-photos" multiple><div class="photoNote" data-note-for="docfile-photos"></div></div>
+    </div>
+    <div class="docItem">
+      <label class="check"><input type="checkbox" class="doc" data-doc="estimate" value="Insurance estimate"> The insurer's estimate</label>
+      <div class="subpanel" id="docupload-estimate" style="display:none"><label>Upload a copy — The insurer's estimate</label><input type="file" id="docfile-estimate" multiple><div class="photoNote" data-note-for="docfile-estimate"></div></div>
+    </div>
+    <div class="docItem">
+      <label class="check"><input type="checkbox" class="doc" data-doc="payment" value="Payment letter / settlement summary"> Payment letter / settlement summary</label>
+      <div class="subpanel" id="docupload-payment" style="display:none"><label>Upload a copy — Payment letter / settlement summary</label><input type="file" id="docfile-payment" multiple><div class="photoNote" data-note-for="docfile-payment"></div></div>
+    </div>
+    <div class="docItem">
+      <label class="check"><input type="checkbox" class="doc" data-doc="denial" value="Denial letter"> Denial letter</label>
+      <div class="subpanel" id="docupload-denial" style="display:none"><label>Upload a copy — Denial letter</label><input type="file" id="docfile-denial" multiple><div class="photoNote" data-note-for="docfile-denial"></div></div>
+    </div>
+    <div class="docItem">
+      <label class="check"><input type="checkbox" class="doc" data-doc="contractor" value="Contractor estimate"> A contractor's estimate</label>
+      <div class="subpanel" id="docupload-contractor" style="display:none"><label>Upload a copy — Contractor's estimate</label><input type="file" id="docfile-contractor" multiple><div class="photoNote" data-note-for="docfile-contractor"></div></div>
+    </div>
+    <div class="docItem">
+      <label class="check"><input type="checkbox" class="doc" data-doc="receipts" value="Receipts / invoices"> Receipts or invoices (repairs, hotel, meals)</label>
+      <div class="subpanel" id="docupload-receipts" style="display:none"><label>Upload a copy — Receipts or invoices</label><input type="file" id="docfile-receipts" multiple><div class="photoNote" data-note-for="docfile-receipts"></div></div>
+    </div>
+    <div class="docItem">
+      <label class="check"><input type="checkbox" class="doc" data-doc="contents" value="Contents inventory"> A list of damaged belongings (contents inventory)</label>
+      <div class="subpanel" id="docupload-contents" style="display:none"><label>Upload a copy — Contents inventory</label><input type="file" id="docfile-contents" multiple><div class="photoNote" data-note-for="docfile-contents"></div></div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>9 · Payments &amp; numbers (skip anything you don't know)</legend>
+    <div class="row">
+      <div><label for="paidSoFar">Amount the insurer has paid so far</label><input id="paidSoFar" type="text" placeholder="e.g. $4,200 or none"></div>
+      <div><label for="confusingDoc">Which document confuses you most?</label>
+        <select id="confusingDoc"><option value="">Choose one…</option><option>The estimate</option><option>The payment letter</option><option>The denial letter</option><option>Depreciation / ACV vs RCV</option><option>My deductible</option><option>Something else</option></select></div>
+    </div>
+    <div class="row">
+      <div><label for="aleCapType">Loss of Use (Coverage D) limit type — if displaced or expecting to be</label>
+        <select id="aleCapType"><option value="">Choose one…</option><option>Dollar amount</option><option>Time period</option><option>Both a dollar amount and a time period</option><option>Don't know</option></select></div>
+      <div><label for="aleCapAmt">Loss of Use limit (amount and/or months, if known)</label><input id="aleCapAmt" type="text" placeholder="e.g. $70,000 or 12 months"></div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>10 · Deadlines &amp; urgency</legend>
+    <label for="deadlineDate">Nearest deadline you are aware of (if any)</label><input id="deadlineDate" type="date">
+    <div class="subpanel" id="deadlineDetailsWrap" style="display:none">
+      <label for="deadlineDetails">Give the details of this deadline * (mandatory when a deadline is listed)</label>
+      <textarea id="deadlineDetails" placeholder="Who set the deadline, what is due, the exact date/time, and what the insurer said happens if it is missed."></textarea>
+    </div>
+    <label class="check"><input type="checkbox" id="timePressure"> Something time-sensitive is happening (contractor waiting, mortgage company holding funds, temporary housing running out).</label>
+  </fieldset>
+
+  <fieldset>
+    <legend>11 · Your top questions for Eisenhower</legend>
+    <label for="q1">Question 1 *</label><input id="q1" type="text" placeholder="The one thing you most want explained">
+    <label for="q2">Question 2</label><input id="q2" type="text">
+    <label for="q3">Question 3</label><input id="q3" type="text">
+  </fieldset>
+
+  <fieldset>
+    <legend>12 · Choose your consultation</legend>
+    <div class="tier"><label class="radio"><input type="radio" name="tier" value="roadmap" checked> <span><strong>Claim Roadmap Call</strong><br>30 minutes by phone. Your Claim Brief reviewed before the call, your questions answered in plain language, and a written one-page roadmap after the call.</span></label></div>
+    <div class="tier"><label class="radio"><input type="radio" name="tier" value="docreview"> <span><strong>Call + Document Review</strong><br>45 minutes by phone. Everything in the Roadmap Call, plus Eisenhower reviews your key documents (estimate, payment or denial letter) before the call.</span></label></div>
+    <label for="times">Preferred days / times (Central Time)</label>
+    <input id="times" type="text" placeholder="e.g. Weekday afternoons, or Saturday morning">
+    <p class="hint">In the live version, this step is replaced by real calendar slots, and payment is taken before your time is confirmed. No payment = no booked call.</p>
+  </fieldset>
+
+  <fieldset>
+    <legend>Scope — please read before submitting</legend>
+    <div class="scope">
+      <p><strong>This is an educational consultation.</strong> The Insurance Claims Guide provides general educational information, organizational assistance and claim-process guidance. ICG does <strong>not</strong> act as a public adjuster, does <strong>not</strong> negotiate insurance claims on behalf of policyholders, does <strong>not</strong> determine insurance coverage, and does <strong>not</strong> provide legal advice. Eisenhower will not contact your insurance company for you, will not tell you what your claim is worth, and cannot guarantee any claim outcome. Questions involving coverage disputes, legal rights, claim negotiation or professional representation should be directed to an appropriately licensed professional.</p>
+      <p>Never submit your Social Security number, bank information, or full policy login details through this form — they are never needed for an educational consultation.</p>
+    </div>
+    <label class="check"><input type="checkbox" id="consent"> I understand this is education and organization help only — not representation, negotiation, coverage determination, or legal advice. *</label>
+    <p class="err" id="formErr">Please complete the required fields (marked *) — the acknowledgment at the top, your details, who is completing the intake (and the relationship, if on behalf), the full property address, what happened, the peril, at least one damaged area, Question 1, the deadline details if you listed a deadline — and check the scope box.</p>
+  </fieldset>
+
+  <button type="submit" id="submitBtn">Build my Claim Brief</button>
+  <p class="hint" style="text-align:center;margin-top:10px">Prototype: the brief below is generated on this device so you can review exactly what Eisenhower will receive.</p>
+</fieldset>
+</form>
+
+<section class="panel" id="result">
+  <h2 style="color:var(--navy);margin-top:0">Your Claim Brief</h2>
+  <p><strong>Teaser (what the customer sees free):</strong> <span id="teaser"></span></p>
+  <p class="hint">In the live version, the full brief below is released after payment, is sent to Eisenhower before the call, and a copy goes to the customer with their booking confirmation.</p>
+  <div id="briefText"></div>
+  <div style="display:grid;gap:10px;margin-top:14px">
+    <button type="button" class="secondary" id="copyBtn">Copy the brief</button>
+    <button type="button" class="secondary" id="printBtn">Print / save as PDF</button>
+  </div>
+  <p id="copyMsg" class="ok" style="display:none">Copied.</p>
+</section>
+
+<footer>The Insurance Claims Guide · theinsuranceclaimsguide.com · Education only — not legal or insurance advice.</footer>
+
+<script>
+(function(){
+  function v(id){var e=document.getElementById(id);return e?e.value.trim():'';}
+  function c(id){var e=document.getElementById(id);return e&&e.checked;}
+  function slug(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,'-');}
+  function checkedValues(cls){var out=[];document.querySelectorAll('.'+cls+':checked').forEach(function(x){out.push(x.value);});return out;}
+  function radioVal(name){var e=document.querySelector('input[name="'+name+'"]:checked');return e?e.value:'';}
+  function fileCount(id){var e=document.getElementById(id);return e&&e.files?e.files.length:0;}
+
+  function wirePhotoInput(input){
+    if(!input||input.getAttribute('data-wired'))return;input.setAttribute('data-wired','1');
+    input.addEventListener('change',function(){
+      var note=document.querySelector('[data-note-for="'+input.id+'"]');
+      var thumbs=document.querySelector('[data-thumbs-for="'+input.id+'"]');
+      if(thumbs)thumbs.innerHTML='';
+      var n=input.files?input.files.length:0;
+      if(note)note.textContent=n>0?n+' file(s) selected':'';
+      if(thumbs&&input.files){for(var i=0;i<input.files.length;i++){if(input.files[i].type.indexOf('image')===0){var img=document.createElement('img');img.src=URL.createObjectURL(input.files[i]);img.alt='upload preview';thumbs.appendChild(img);}}}
+    });
+  }
+  document.querySelectorAll('input[type=file]').forEach(wirePhotoInput);
+
+  function photoCounts(pageEl){
+    var total=0,present=[];
+    if(!pageEl)return{total:0,present:present};
+    pageEl.querySelectorAll('input[type=file]').forEach(function(inp){
+      var n=inp.files?inp.files.length:0;total+=n;
+      if(n>0)present.push(inp.getAttribute('data-slot')||inp.id);
+    });
+    return{total:total,present:present};
+  }
+  function slotInputs(kind,sl){
+    var slots=[['Corner 1','corner1'],['Corner 2','corner2'],['Corner 3','corner3'],['Corner 4','corner4']];
+    var html='<div class="photoGrid">';
+    slots.forEach(function(s){html+='<div class="photoSlot"><label>'+s[0]+' photo</label><input type="file" data-slot="'+s[0]+'" id="'+kind+'-'+s[1]+'-'+sl+'" accept="image/*"><div class="photoNote" data-note-for="'+kind+'-'+s[1]+'-'+sl+'"></div><div class="thumbs" data-thumbs-for="'+kind+'-'+s[1]+'-'+sl+'"></div></div>';});
+    var topLabel=kind==='room'?'Ceiling photos':'Top / roof photos';
+    html+='<div class="photoSlot"><label>'+topLabel+'</label><input type="file" data-slot="'+topLabel+'" id="'+kind+'-top-'+sl+'" accept="image/*" multiple><div class="photoNote" data-note-for="'+kind+'-top-'+sl+'"></div><div class="thumbs" data-thumbs-for="'+kind+'-top-'+sl+'"></div></div>';
+    html+='<div class="photoSlot"><label>Close-up photos of the damage</label><input type="file" data-slot="Close-ups" id="'+kind+'-close-'+sl+'" accept="image/*" multiple><div class="photoNote" data-note-for="'+kind+'-close-'+sl+'"></div><div class="thumbs" data-thumbs-for="'+kind+'-close-'+sl+'"></div></div>';
+    html+='</div>';
+    return html;
+  }
+
+  function createPage(kind,origName,containerId,key,label){
+    var pageId=kind+'page-'+key;
+    if(document.getElementById(pageId))return;
+    var div=document.createElement('div');
+    div.className='pageCard';div.id=pageId;
+    var title=kind==='struct'?'Structure page':(origName==='Ceiling'?'Interior page':'Room page');
+    var thing=kind==='struct'?'this structure':(origName==='Ceiling'?'the ceiling':'this room');
+    var descLabel=kind==='struct'?'Describe the damage to this structure':'Describe the damage in this '+(origName==='Ceiling'?'area':'room');
+    div.innerHTML='<h3>'+title+' — '+label+'</h3>'+
+      '<label class="check"><input type="checkbox" id="'+kind+'nodmg-'+key+'"> <strong>No damage — close this page</strong></label>'+
+      '<div id="'+kind+'body-'+key+'">'+
+      '<label>'+descLabel+'</label><textarea id="'+kind+'desc-'+key+'" placeholder="What is damaged here? In your own words."></textarea>'+
+      '<label class="check"><input type="checkbox" id="'+kind+'match-'+key+'"> Does this surface have a <strong>non-uniform (mismatched) appearance</strong> — a different color, material, or pattern than the rest of the surface?</label>'+
+      '<div id="'+kind+'matchwrap-'+key+'" style="display:none"><label>Describe the mismatch</label><input type="text" id="'+kind+'matchdesc-'+key+'" placeholder="e.g. Replacement flooring is a different shade than the original"></div>'+
+      '<label>Do you have photos of the damage to '+thing+'?</label>'+
+      '<label class="radio"><input type="radio" name="hasphotos-'+kind+'-'+key+'" value="Yes"> Yes</label>'+
+      '<label class="radio"><input type="radio" name="hasphotos-'+kind+'-'+key+'" value="No"> No</label>'+
+      '<div id="'+kind+'photos-'+key+'" style="display:none">'+
+      '<p class="hint">Please upload photos: one from each of the 4 corners, plus '+(kind==='room'?'ceiling':'top / roof')+' photos and close-ups.</p>'+
+      slotInputs(kind,key)+'</div></div>';
+    document.getElementById(containerId).appendChild(div);
+    div.querySelectorAll('input[type=file]').forEach(wirePhotoInput);
+    document.getElementById(kind+'nodmg-'+key).addEventListener('change',function(){
+      var body=document.getElementById(kind+'body-'+key);
+      if(body)body.style.display=this.checked?'none':'block';
+    });
+    div.querySelectorAll('input[name="hasphotos-'+kind+'-'+key+'"]').forEach(function(r){
+      r.addEventListener('change',function(){
+        var wrap=document.getElementById(kind+'photos-'+key);
+        if(wrap)wrap.style.display=radioVal('hasphotos-'+kind+'-'+key)==='Yes'?'block':'none';
+      });
+    });
+    var mchk=document.getElementById(kind+'match-'+key);
+    if(mchk)mchk.addEventListener('change',function(){
+      var mw=document.getElementById(kind+'matchwrap-'+key);
+      if(mw)mw.style.display=this.checked?'block':'none';
+    });
+  }
+  function removePageById(pageId){var el=document.getElementById(pageId);if(el)el.remove();}
+
+  // ---------- Top notice gate ----------
+  document.getElementById('ackTop').addEventListener('change',function(){
+    document.getElementById('ackSubmit').disabled=!this.checked;
+  });
+  document.getElementById('ackSubmit').addEventListener('click',function(){
+    if(!document.getElementById('ackTop').checked)return;
+    document.getElementById('termsNotice').style.display='none';
+    document.getElementById('mainGate').disabled=false;
+    document.getElementById('mainGate').scrollIntoView({behavior:'smooth'});
+  });
+
+  // ---------- Policy holder / on-behalf ----------
+  document.getElementById('iamHolder').addEventListener('change',function(){
+    if(this.checked){document.getElementById('onBehalf').checked=false;document.getElementById('behalfPanel').style.display='none';}
+  });
+  document.getElementById('onBehalf').addEventListener('change',function(){
+    if(this.checked){document.getElementById('iamHolder').checked=false;}
+    document.getElementById('behalfPanel').style.display=this.checked?'block':'none';
+  });
+
+  // ---------- Section 3 triggers ----------
+  document.getElementById('propType').addEventListener('change',function(){
+    document.getElementById('propOtherWrap').style.display=this.value==='Other'?'block':'none';
+  });
+  document.getElementById('floors').addEventListener('change',function(){
+    document.getElementById('floorsOtherWrap').style.display=this.value==='Other'?'block':'none';
+  });
+  document.getElementById('insurer').addEventListener('change',function(){
+    document.getElementById('insurerOtherWrap').style.display=this.value==='Other'?'block':'none';
+  });
+  document.getElementById('policyType').addEventListener('change',function(){
+    document.getElementById('policyTypeOtherWrap').style.display=this.value==='Other'?'block':'none';
+    document.getElementById('policyUploadWrap').style.display=this.value!==''?'block':'none';
+    var pf=document.getElementById('policyFile');if(pf)wirePhotoInput(pf);
+  });
+
+  // ---------- v2.4: jurisdiction lock-in + gap-fill triggers ----------
+  function syncJurisdiction(){
+    var st=document.getElementById('state').value.trim();
+    var co=document.getElementById('addrCounty').value.trim();
+    var bar=document.getElementById('jurisdictionBar');
+    if(st){document.getElementById('jurisdictionText').textContent=st+(co?' · '+co+' County':'');bar.style.display='block';}
+    else{bar.style.display='none';}
+  }
+  document.getElementById('state').addEventListener('input',syncJurisdiction);
+  document.getElementById('state').addEventListener('change',syncJurisdiction);
+  document.getElementById('addrCounty').addEventListener('input',syncJurisdiction);
+  document.getElementById('addrCounty').addEventListener('change',syncJurisdiction);
+  document.getElementById('olEndorse').addEventListener('change',function(){
+    document.getElementById('olWrap').style.display=this.value==='Yes'?'block':'none';
+  });
+  document.getElementById('floodPolicy').addEventListener('change',function(){
+    document.getElementById('floodWrap').style.display=this.value.indexOf('Yes')===0?'block':'none';
+  });
+  document.getElementById('mortgage').addEventListener('change',function(){
+    document.getElementById('mortgageWrap').style.display=this.value==='Yes'?'block':'none';
+  });
+  document.getElementById('hoa').addEventListener('change',function(){
+    document.getElementById('hoaWrap').style.display=this.value==='Yes'?'block':'none';
+  });
+  document.getElementById('polAsked').addEventListener('change',function(){
+    document.getElementById('polWrap').style.display=this.checked?'block':'none';
+  });
+  document.getElementById('euoAsked').addEventListener('change',function(){
+    document.getElementById('euoWrap').style.display=this.checked?'block':'none';
+  });
+  document.getElementById('advancePaid').addEventListener('change',function(){
+    document.getElementById('advanceWrap').style.display=this.checked?'block':'none';
+  });
+
+  // ---------- v2.6: matching toggles + prior claims ----------
+  document.querySelectorAll('.elevMatchChk').forEach(function(chk){
+    chk.addEventListener('change',function(){
+      var w=document.getElementById('elevmatchwrap-'+chk.id.substring('elevmatch-'.length));
+      if(w)w.style.display=this.checked?'block':'none';
+    });
+  });
+  document.getElementById('fenceMatch').addEventListener('change',function(){
+    document.getElementById('fenceMatchWrap').style.display=this.checked?'block':'none';
+  });
+  document.getElementById('priorRepairs').addEventListener('change',function(){
+    document.getElementById('priorRepairsWrap').style.display=this.value==='Yes'?'block':'none';
+  });
+  function syncPriorClaims(){
+    var n=parseInt(document.getElementById('priorCount').value,10)||0;
+    var wrap=document.getElementById('priorClaimBlocks');wrap.innerHTML='';
+    for(var i=1;i<=n;i++){
+      var d=document.createElement('div');d.className='subpanel';
+      d.innerHTML='<strong>Prior claim '+i+'</strong>'+
+      '<div class="row"><div><label>When (month / year)</label><input type="text" id="pc-when-'+i+'" placeholder="e.g. March 2023"></div>'+
+      '<div><label>What happened (peril)</label><input type="text" id="pc-peril-'+i+'" placeholder="e.g. Wind / Hail, water leak, fire"></div></div>'+
+      '<div class="row"><div><label>Insurance company</label><input type="text" id="pc-insurer-'+i+'"></div>'+
+      '<div><label>Claim number (if known)</label><input type="text" id="pc-no-'+i+'"></div></div>'+
+      '<div class="row"><div><label>Amount paid (if known)</label><input type="text" id="pc-paid-'+i+'" placeholder="e.g. $18,000 — or denied"></div>'+
+      '<div><label>Status</label><select id="pc-status-'+i+'"><option value="">Choose one…</option><option>Closed — fully repaired</option><option>Closed — repairs NOT completed</option><option>Still open</option><option>Denied</option></select></div></div>'+
+      '<label>What repairs were done for this claim?</label><textarea id="pc-repairs-'+i+'" placeholder="What was repaired or replaced — and what was NOT repaired, if anything."></textarea>';
+      wrap.appendChild(d);
+    }
+  }
+  document.getElementById('priorCount').addEventListener('change',syncPriorClaims);
+
+  // ---------- Damaged areas with photo questions: Roof + elevations ----------
+  document.querySelectorAll('.elevChk').forEach(function(chk){
+    chk.addEventListener('change',function(){
+      var p=document.getElementById('elevpanel-'+slug(chk.value));
+      if(p)p.style.display=chk.checked?'block':'none';
+    });
+  });
+  document.querySelectorAll('input[name^="elevhas-"]').forEach(function(r){
+    r.addEventListener('change',function(){
+      var key=r.name.substring('elevhas-'.length);
+      var up=document.getElementById('elevupload-'+key);
+      if(up)up.style.display=radioVal(r.name)==='Yes'?'block':'none';
+    });
+  });
+
+  // ---------- Interior: rooms with count dropdown 1-6 and Other ----------
+  function roomCount(name){
+    if(name==='Ceiling')return 1;
+    var sel=document.querySelector('.roomCountSel[data-room="'+name+'"]');
+    if(!sel)return 1;
+    if(sel.value==='Other'){
+      var o=document.querySelector('.roomCountOther[data-room="'+name+'"]');
+      var n=o?parseInt(o.value,10):NaN;
+      return (!isNaN(n)&&n>0)?Math.min(n,20):0;
+    }
+    return parseInt(sel.value,10);
+  }
+  function removeRoomPages(name){
+    document.querySelectorAll('[id^="roompage-'+slug(name)+'-"]').forEach(function(p){p.remove();});
+  }
+  function syncRoomPages(name){
+    var count=roomCount(name);
+    var saved={};
+    document.querySelectorAll('[id^="roompage-'+slug(name)+'-"]').forEach(function(p){
+      var key=p.id.replace('roompage-','');
+      var d=document.getElementById('roomdesc-'+key);
+      if(d)saved[key]=d.value;
+      p.remove();
+    });
+    for(var i=1;i<=count;i++){
+      var key=slug(name)+'-'+i;
+      var label=count>1?name+' '+i:name;
+      createPage('room',name,'roomPages',key,label);
+      if(saved[key]){var dd=document.getElementById('roomdesc-'+key);if(dd)dd.value=saved[key];}
+    }
+  }
+  document.querySelectorAll('.roomChk').forEach(function(r){
+    if(r.value!=='Ceiling'){
+      var wrap=document.createElement('div');
+      wrap.className='subpanel countWrap';wrap.id='roomcount-'+slug(r.value);wrap.style.display='none';
+      var opts='';for(var n=1;n<=6;n++){opts+='<option value="'+n+'">'+n+'</option>';}opts+='<option value="Other">Other</option>';
+      wrap.innerHTML='<label>How many — '+r.value+'?</label><select class="roomCountSel" data-room="'+r.value+'">'+opts+'</select><input type="text" class="roomCountOther" data-room="'+r.value+'" placeholder="Enter the number" style="display:none;margin-top:6px"><p class="hint">Set the number before uploading photos — changing it rebuilds the pages for this room.</p>';
+      r.closest('label').after(wrap);
+      wrap.querySelector('.roomCountSel').addEventListener('change',function(){
+        var o=wrap.querySelector('.roomCountOther');
+        o.style.display=this.value==='Other'?'block':'none';
+        syncRoomPages(r.value);
+      });
+      wrap.querySelector('.roomCountOther').addEventListener('input',function(){syncRoomPages(r.value);});
+    }
+    r.addEventListener('change',function(){
+      var w=document.getElementById('roomcount-'+slug(this.value));
+      if(this.checked){if(w)w.style.display='block';syncRoomPages(this.value);}
+      else{if(w)w.style.display='none';removeRoomPages(this.value);}
+    });
+  });
+  document.getElementById('areaInterior').addEventListener('change',function(){
+    var panel=document.getElementById('roomPicker');
+    panel.style.display=this.checked?'block':'none';
+    if(!this.checked){
+      document.querySelectorAll('.roomChk:checked').forEach(function(r){r.checked=false;var w=document.getElementById('roomcount-'+slug(r.value));if(w)w.style.display='none';removeRoomPages(r.value);});
+    }
+  });
+
+  // ---------- Other structures ----------
+  document.querySelectorAll('input[name=otherStruct]').forEach(function(r){
+    r.addEventListener('change',function(){
+      var show=radioVal('otherStruct')==='Yes';
+      document.getElementById('structPicker').style.display=show?'block':'none';
+      if(!show){document.querySelectorAll('.structChk:checked').forEach(function(s){s.checked=false;removePageById('structpage-'+slug(s.value));});}
+    });
+  });
+  document.querySelectorAll('.structChk').forEach(function(s){
+    s.addEventListener('change',function(){ if(this.checked)createPage('struct',this.value,'structPages',slug(this.value),this.value); else removePageById('structpage-'+slug(this.value)); });
+  });
+
+  // ---------- Fence ----------
+  document.querySelectorAll('input[name=fence]').forEach(function(r){
+    r.addEventListener('change',function(){
+      document.getElementById('fenceDetails').style.display=radioVal('fence')==='Yes'?'block':'none';
+    });
+  });
+  document.querySelectorAll('input[name=fenceHasPhotos]').forEach(function(r){
+    r.addEventListener('change',function(){
+      document.getElementById('fenceUploadWrap').style.display=radioVal('fenceHasPhotos')==='Yes'?'block':'none';
+    });
+  });
+
+  // ---------- Documents: upload-a-copy tabs ----------
+  document.querySelectorAll('.doc').forEach(function(d){
+    d.addEventListener('change',function(){
+      var p=document.getElementById('docupload-'+d.getAttribute('data-doc'));
+      if(p)p.style.display=d.checked?'block':'none';
+    });
+  });
+
+  // ---------- Deadline: a listed deadline makes details mandatory ----------
+  document.getElementById('deadlineDate').addEventListener('change',function(){
+    document.getElementById('deadlineDetailsWrap').style.display=this.value?'block':'none';
+  });
+
+  // ---------- Brief ----------
+  function readPage(kind,key,label,gaps){
+    var lines=[];
+    var nodmg=document.getElementById(kind+'nodmg-'+key);
+    if(nodmg&&nodmg.checked){lines.push('- '+label+': No damage — page closed by the user');return lines;}
+    var page=document.getElementById(kind+'page-'+key);
+    var desc=v(kind+'desc-'+key);
+    var has=radioVal('hasphotos-'+kind+'-'+key);
+    lines.push('- '+label+': '+(desc||'(damage not described yet)'));
+    if(!desc)gaps.push(label+' — damage description not provided');
+    var mtc=document.getElementById(kind+'match-'+key);
+    if(mtc&&mtc.checked){lines.push('  MATCHING: NON-UNIFORM appearance reported — '+(v(kind+'matchdesc-'+key)||'not described'));gaps.push(label+' — non-uniform (matching) appearance reported: photo documentation of the mismatch needed');}
+    else{lines.push('  MATCHING: no non-uniform appearance reported');}
+    if(has==='Yes'){
+      var pc=photoCounts(page);
+      lines.push('  Photos: Yes — '+pc.total+' total · views provided: '+(pc.present.length?pc.present.join(', '):'none'));
+      var need=['Corner 1','Corner 2','Corner 3','Corner 4',kind==='room'?'Ceiling photos':'Top / roof photos'];
+      var missing=need.filter(function(n){return pc.present.indexOf(n)<0;});
+      if(missing.length)gaps.push(label+' — missing photo views: '+missing.join(', '));
+    }else if(has==='No'){lines.push('  Photos: No — policy holder has no photos of this damage');gaps.push(label+' — no photos available');}
+    else{lines.push('  Photos: question not answered');gaps.push(label+' — photo question not answered');}
+    return lines;
+  }
+
+  var form=document.getElementById('intake');
+  form.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var err=document.getElementById('formErr');
+    var areas=checkedValues('areaChk');
+    var required=[v('fullName'),v('phone'),v('email'),v('whatHappened'),v('cause'),v('q1'),v('addrStreet'),v('addrCity'),v('state'),v('addrZip')];
+    var submitterOk=(c('iamHolder')&&!c('onBehalf'))||(c('onBehalf')&&v('relationship')!=='');
+    var deadlineOk=!v('deadlineDate')||v('deadlineDetails')!=='';
+    if(required.indexOf('')>-1||areas.length===0||!submitterOk||!deadlineOk||!c('consent')||!c('ackTop')){err.style.display='block';err.scrollIntoView({behavior:'smooth'});return;}
+    err.style.display='none';
+
+    var gaps=[];
+    var docEls=[];document.querySelectorAll('.doc:checked').forEach(function(d){docEls.push(d);});
+    var docNames=docEls.map(function(d){return d.value;});
+    if(c('denialLetter')&&docNames.indexOf('Denial letter')<0)gaps.push('Denial received but denial letter not in the document set');
+    if((v('filed').indexOf('open')>-1||v('filed').indexOf('closed')>-1)&&docNames.indexOf('Insurance estimate')<0)gaps.push('Claim filed but insurer estimate not on hand');
+    if(!v('deadlineDate')&&!c('deadlineGiven'))gaps.push('No deadline identified yet — confirm deadlines on the call');
+    if(fileCount('policyFile')===0)gaps.push('Policy copy not uploaded (Section 3)');
+
+    var tier=document.querySelector('input[name=tier]:checked').value==='docreview'?'Call + Document Review (45 min)':'Claim Roadmap Call (30 min)';
+    var L=[];
+    L.push('CLAIM BRIEF — ICG Claim Roadmap Consultation');
+    L.push('Prepared for Eisenhower R. Antoine · Generated from customer intake (v2.7)');
+    L.push('JURISDICTION (locked from the loss address): '+(v('state')||'not stated')+' — handled under that state\'s rules and its Department of Insurance');
+    L.push('');
+    L.push('CUSTOMER: '+v('fullName')+' · '+v('phone')+' · '+v('email'));
+    if(c('iamHolder')){L.push('COMPLETED BY: The policy holder');}
+    else{
+      var rel=v('relationship')+(v('relationship')==='Other'&&v('relationshipOther')?' — '+v('relationshipOther'):'');
+      L.push('COMPLETED BY: On behalf of the policy holder · Relationship: '+rel+(v('holderName')?' · Policy holder: '+v('holderName'):''));
+      L.push('ACTION BEFORE THE CALL: Submitter is NOT the policy holder — ICG must first get verbal permission from the policy holder to discuss the claim or the policy with this person. Do not discuss the claim or the policy until that permission is obtained.');
+    }
+    L.push('PROPERTY ADDRESS: '+v('addrStreet')+(v('addrUnit')?', '+v('addrUnit'):'')+', '+v('addrCity')+', '+v('state')+' '+v('addrZip')+(v('addrCounty')?' · County: '+v('addrCounty'):''));
+    if(!v('addrCounty'))gaps.push('County not provided — the county guides the city-regulations and permit lookup for this claim');
+    var pt=v('propType')+(v('propType')==='Other'&&v('propTypeOther')?' — '+v('propTypeOther'):'');
+    L.push('PROPERTY TYPE: '+(pt||'not stated'));
+    var fl=v('floors')==='Other'?(v('floorsOther')||'Other'):v('floors');
+    L.push('# OF FLOORS: '+(fl||'not stated'));
+    L.push('CONSULTATION BOOKED: '+tier);
+    L.push('PREFERRED TIMES (CT): '+(v('times')||'not stated'));
+    L.push('');
+    var insurer=v('insurer')==='Other'?(v('insurerOther')||'Other'):v('insurer');
+    var policyType=v('policyType')==='Other'?(v('policyTypeOther')||'Other'):v('policyType');
+    L.push('INSURANCE COMPANY: '+(insurer||'not stated'));
+    L.push('POLICY TYPE: '+(policyType||'not stated')+' · POLICY COPY UPLOADED: '+(fileCount('policyFile')>0?fileCount('policyFile')+' file(s)':'No'));
+    var cov=[['Dwelling (A)','covDwelling'],['Other Structures (B)','covOtherStructures'],['Contents / Personal Property (C)','covContents'],['Loss of Use (D)','covLossOfUse'],['Personal Liability (E)','covLiability'],['Medical Payments (F)','covMedical']];
+    var covLines=cov.filter(function(x){return v(x[1])!=='';}).map(function(x){return x[0]+' '+v(x[1]);});
+    L.push('COVERAGE LIMITS: '+(covLines.length?covLines.join(' · '):'none provided'));
+    L.push('DEDUCTIBLE: '+(v('deductible')||'not stated')+' · WIND / HAIL DEDUCTIBLE: '+(v('deductibleWind')||'not stated'));
+    L.push('ORDINANCE & LAW: '+(v('olEndorse')||'not stated')+(v('olEndorse')==='Yes'?' · Limit: '+(v('olPct')||'not stated'):''));
+    L.push('FLOOD POLICY: '+(v('floodPolicy')||'not stated')+(v('floodPolicy').indexOf('Yes')===0?' · Insurer: '+(v('floodInsurer')||'not stated')+' · Policy #: '+(v('floodPolicyNo')||'not stated')+' · FLOOD TRACK APPLIES (NFIP rules — 60-day sworn proof of loss)':''));
+    L.push('MORTGAGE / LIENHOLDER: '+(v('mortgage')||'not stated')+(v('mortgage')==='Yes'?' · Servicer: '+(v('servicerName')||'not stated')+' · LOSS-DRAFT TRACK EXPECTED (checks payable to holder + mortgage company)':''));
+    L.push('HOA: '+(v('hoa')||'not stated')+(v('hoa')==='Yes'?' · '+(v('hoaName')||'name not stated')+' · Contact: '+(v('hoaContact')||'not stated')+' · Requirements noted: '+(v('hoaRules')||'none noted')+' · FLAG: Check HOA requirements before repairs (materials/colors) — feeds Ordinance & Law and matching':'')+(v('hoa')==='Don\'t know'?' · FLAG: HOA status unknown — ICG to check for an HOA at this address':''));
+    var subs=checkedValues('sublimitChk');
+    L.push('CONTENTS SPECIAL LIMITS AFFECTED: '+(subs.length?subs.join('; ')+(v('sublimitDesc')?' — '+v('sublimitDesc'):''):'none reported'));
+    L.push('');
+    L.push('PERIL (TYPE OF LOSS): '+v('cause'));
+    L.push('TIMELINE: '+(v('lossDate')?'Loss date: '+v('lossDate'):'Loss date not stated')+(v('discovered')?' · Discovered: '+v('discovered'):''));
+    L.push('WHAT HAPPENED: '+v('whatHappened'));
+    if(c('living'))L.push('FLAG: Home not safely livable.');
+    if(c('stillLeaking'))L.push('FLAG: Damage still getting worse.');
+    L.push('');
+    L.push('DAMAGED AREAS: '+areas.join('; '));
+    areas.filter(function(a){return a==='Roof'||a.indexOf('elevation')>-1;}).forEach(function(a){
+      var sl=slug(a);var has=radioVal('elevhas-'+sl);
+      if(has==='Yes'){var n=fileCount('elevfile-'+sl);L.push('- '+a+' photos: Yes — '+n+' uploaded');if(n===0)gaps.push(a+' — photos said Yes but none uploaded');}
+      else if(has==='No'){L.push('- '+a+' photos: No — policy holder has no photos');gaps.push(a+' — no photos available');}
+      else{L.push('- '+a+' photos: not answered');gaps.push(a+' — photo question not answered');}
+      var em=document.getElementById('elevmatch-'+sl);
+      if(em&&em.checked){L.push('- '+a+' MATCHING: NON-UNIFORM appearance reported — '+(v('elevmatchdesc-'+sl)||'not described'));gaps.push(a+' — non-uniform (matching) appearance reported: photo documentation of the mismatch needed');}
+      else{L.push('- '+a+' MATCHING: no non-uniform appearance reported');}
+    });
+
+    var rooms=checkedValues('roomChk');
+    if(rooms.length){
+      L.push('');
+      L.push('INTERIOR — PER-ITEM DETAIL (ceiling, rooms):');
+      rooms.forEach(function(name){
+        var count=roomCount(name);
+        for(var i=1;i<=count;i++){
+          var key=slug(name)+'-'+i;
+          var label=count>1?name+' '+i:name;
+          readPage('room',key,label,gaps).forEach(function(x){L.push(x);});
+        }
+      });
+    }
+
+    var hasStruct=radioVal('otherStruct')==='Yes';
+    var structs=checkedValues('structChk');
+    L.push('');
+    L.push('OTHER STRUCTURES: '+(hasStruct?(structs.length?structs.join('; '):'Yes — none specified'):'None'));
+    structs.forEach(function(name){
+      readPage('struct',slug(name),name,gaps).forEach(function(x){L.push(x);});
+    });
+
+    var fence=radioVal('fence');
+    L.push('');
+    if(fence==='Yes'){
+      var shared=radioVal('fenceShared');
+      var fHas=radioVal('fenceHasPhotos');
+      L.push('FENCE: Damaged · Shared: '+(shared||'not stated')+' · Type: '+(v('fenceType')||'not stated'));
+      L.push('FENCE DAMAGE: '+(v('fenceDesc')||'(not described)'));
+      if(c('fenceMatch')){L.push('FENCE MATCHING: NON-UNIFORM appearance reported — '+(v('fenceMatchDesc')||'not described'));gaps.push('Fence — non-uniform (matching) appearance reported: photo documentation of the mismatch needed');}
+      else{L.push('FENCE MATCHING: no non-uniform appearance reported');}
+      if(fHas==='Yes'){var fn=fileCount('fencePhotos');L.push('FENCE PHOTOS: Yes — '+fn+' uploaded');if(fn===0)gaps.push('Fence — photos said Yes but none uploaded');}
+      else if(fHas==='No'){L.push('FENCE PHOTOS: No — policy holder has no photos');gaps.push('Fence — no photos available');}
+      else{L.push('FENCE PHOTOS: question not answered');gaps.push('Fence — photo question not answered');}
+    }else{
+      L.push('FENCE: No fence / not damaged');
+    }
+
+    L.push('');
+    L.push('CLAIM STATUS: '+(v('filed')||'not stated')+(v('claimNo')?' · Claim #: '+v('claimNo'):'')+' · ADJUSTER INSPECTED: '+(v('adjusterVisit')||'not stated'));
+    L.push('');
+    var pcN=parseInt(v('priorCount'),10)||0;
+    if(pcN===0){L.push('PRIOR CLAIMS DISCLOSED: None reported');}
+    else{
+      L.push('PRIOR CLAIMS DISCLOSED: '+pcN+' prior claim(s)');
+      for(var pi=1;pi<=pcN;pi++){
+        var pst=v('pc-status-'+pi);
+        L.push('- Prior claim '+pi+': '+(v('pc-when-'+pi)||'when not stated')+' · '+(v('pc-peril-'+pi)||'peril not stated')+' · Insurer: '+(v('pc-insurer-'+pi)||'not stated')+(v('pc-no-'+pi)?' · Claim #: '+v('pc-no-'+pi):'')+' · Paid: '+(v('pc-paid-'+pi)||'not stated')+' · Status: '+(pst||'not stated'));
+        L.push('  Repairs for this claim: '+(v('pc-repairs-'+pi)||'(not described)'));
+        if(pst==='Closed — repairs NOT completed')gaps.push('Prior claim '+pi+' — repairs were NOT completed: the insurer may call current damage pre-existing — document exactly what was and was not repaired');
+      }
+    }
+    L.push('PRIOR REPAIRS (no claim): '+(v('priorRepairs')||'not stated')+(v('priorRepairs')==='Yes'?' — '+(v('priorRepairsDesc')||'(not described)'):''));
+    if(c('unrepairedDamage')){L.push('FLAG: Damage from a PRIOR event was never repaired on this property.');gaps.push('Unrepaired prior-event damage on the property — separate it from the current loss in photos and descriptions so the insurer cannot merge the two');}
+    L.push('COMMS SO FAR: '+(v('comms')||'none reported'));
+    if(c('denialLetter'))L.push('FLAG: Denial / partial-denial letter received.');
+    if(c('deadlineGiven'))L.push('FLAG: Insurer gave the customer a deadline.');
+    if(c('polAsked')){L.push('FLAG — PROOF OF LOSS DEMANDED: asked '+(v('polDate')||'date not stated')+' · DUE: '+(v('polDue')||'NOT STATED — confirm on the call'));if(!v('polDue'))gaps.push('Proof of loss demanded but its due date not captured — confirm first on the call');}
+    if(c('euoAsked')){L.push('FLAG — STATEMENT / EUO DEMANDED: '+(v('euoType')||'type not stated')+' · Date: '+(v('euoDate')||'not stated'));gaps.push('Recorded statement / EUO demanded — brief the customer on what to expect before it happens');}
+    if(c('advancePaid'))L.push('ADVANCE PAYMENT RECEIVED: '+(v('advanceAmt')||'amount not stated'));
+    L.push('');
+    if(docEls.length){
+      L.push('DOCUMENTS ON HAND — WITH COPIES:');
+      docEls.forEach(function(d){
+        var n=fileCount('docfile-'+d.getAttribute('data-doc'));
+        L.push('- '+d.value+': '+(n>0?n+' file(s) uploaded':'copy NOT uploaded'));
+        if(n===0)gaps.push(d.value+' — checked as on hand but no copy uploaded');
+      });
+    }else{L.push('DOCUMENTS ON HAND: none checked');}
+    L.push('PAID SO FAR: '+(v('paidSoFar')||'not stated')+' · MOST CONFUSING DOCUMENT: '+(v('confusingDoc')||'not stated'));
+    L.push('LOSS OF USE CAP: '+(v('aleCapType')||'not stated')+(v('aleCapAmt')?' · '+v('aleCapAmt'):''));
+    L.push('NEAREST DEADLINE: '+(v('deadlineDate')?v('deadlineDate')+' — '+v('deadlineDetails'):'none stated')+(c('timePressure')?' · TIME PRESSURE FLAGGED':''));
+    L.push('');
+    L.push('TOP QUESTIONS:');
+    L.push('1. '+v('q1'));
+    if(v('q2'))L.push('2. '+v('q2'));
+    if(v('q3'))L.push('3. '+v('q3'));
+    L.push('');
+    L.push('OPEN GAPS FOR THE CALL:');
+    if(gaps.length){gaps.forEach(function(g){L.push('- '+g);});}else{L.push('- None auto-detected.');}
+    L.push('');
+    L.push('SCOPE: Customer acknowledged the top-of-form ICG terms and confirmed education-only scope at intake (no representation, negotiation, coverage determination, or legal advice).');
+
+    document.getElementById('teaser').textContent='Your claim brief is built for '+v('addrStreet')+', '+v('addrCity')+': peril "'+v('cause')+'", damaged areas: '+areas.join(', ')+(rooms.length?', '+rooms.length+' interior selection(s)':'')+(structs.length?', '+structs.length+' structure page(s)':'')+', '+gaps.length+' open gap(s) identified for your call.';
+    document.getElementById('briefText').textContent=L.join('\n');
+    var r=document.getElementById('result');r.style.display='block';r.scrollIntoView({behavior:'smooth'});
+  });
+  document.getElementById('copyBtn').addEventListener('click',function(){
+    var t=document.getElementById('briefText').textContent;
+    if(navigator.clipboard){navigator.clipboard.writeText(t).then(function(){document.getElementById('copyMsg').style.display='block';});}
+  });
+  document.getElementById('printBtn').addEventListener('click',function(){window.print();});
+})();
+</script>
+</body>
+</html>
