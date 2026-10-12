@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>For Adjusters | The Insurance Claims Guide</title>
+<style>
+    :root {
+      --navy: #081b35;
+      --navy-2: #102b50;
+      --navy-3: #183b68;
+      --gold: #d9a62e;
+      --gold-light: #f4c44a;
+      --cream: #f8f5ec;
+      --white: #ffffff;
+      --text: #172235;
+      --muted: #667085;
+      --line: #d9dee7;
+      --shadow: 0 18px 45px rgba(4, 20, 40, 0.12);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 0; }
+    body { font-family: Arial, Helvetica, sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    section[id] { scroll-margin-top: 20px; }
+    .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+    .eyebrow { color: var(--gold); font-size: 0.8rem; font-weight: 900; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 12px; }
+    .section { padding: 92px 0; }
+    .section-title { max-width: 820px; margin-bottom: 42px; }
+    .section-title h2 { font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.12; color: var(--navy); margin-bottom: 16px; }
+    .section-title p { color: var(--muted); font-size: 1.05rem; }
+
+    .site-header { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,0.97); border-bottom: 1px solid rgba(8,27,53,0.08); backdrop-filter: blur(10px); }
+    .header-inner { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .brand { display: flex; align-items: center; gap: 13px; min-width: 260px; }
+    .brand-logo-wrap { width: 58px; height: 58px; flex: 0 0 58px; }
+    .brand-logo { width: 58px; height: 58px; object-fit: contain; transform: scale(1.25); }
+    .fallback-logo { width: 58px; height: 58px; border-radius: 50%; border: 3px solid var(--gold); background: var(--navy); color: var(--gold-light); display: none; place-items: center; font-weight: 900; font-size: 1.15rem; box-shadow: inset 0 0 0 3px var(--navy), inset 0 0 0 4px var(--gold); }
+    .brand-copy strong { display: block; color: var(--navy); font-size: 0.96rem; line-height: 1.15; }
+    .brand-copy span { color: var(--gold); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.09em; font-weight: 800; }
+    .desktop-nav { display: flex; align-items: center; gap: 22px; }
+    .desktop-nav a { color: var(--navy); font-size: 0.86rem; font-weight: 800; }
+    .desktop-nav a:hover { color: var(--gold); }
+    .desktop-nav .books-nav { color: #a57200; }
+    .header-cta { background: var(--gold); color: var(--navy); padding: 12px 18px; border-radius: 999px; font-weight: 900; font-size: 0.86rem; white-space: nowrap; }
+    .menu-button { width: 46px; height: 46px; display: none; align-items: center; justify-content: center; background: var(--navy); color: white; border: 0; border-radius: 10px; cursor: pointer; font-size: 1.4rem; }
+    .mobile-menu { display: none; background: var(--navy); padding: 8px 20px 20px; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; padding: 14px 4px; color: white; font-weight: 800; border-bottom: 1px solid rgba(255,255,255,0.12); }
+    .mobile-menu .books-nav { color: var(--gold-light); }
+
+    .hero { background: radial-gradient(circle at 85% 20%, rgba(217,166,46,0.18), transparent 29%), linear-gradient(135deg, #06162d 0%, #0d2b52 62%, #163e70 100%); color: white; padding: 96px 0 90px; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 60px; align-items: center; }
+    .hero h1 { font-size: clamp(2.7rem, 6vw, 5.3rem); line-height: 0.98; max-width: 820px; margin-bottom: 22px; }
+    .hero h1 span { color: var(--gold-light); }
+    .hero-lead { font-size: clamp(1.08rem, 2vw, 1.28rem); color: #e8eef7; max-width: 740px; margin-bottom: 28px; }
+    .hero-tagline { color: var(--gold-light); font-weight: 900; font-size: 1.1rem; margin-bottom: 16px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 13px 22px; border-radius: 999px; font-weight: 900; transition: 0.2s ease; cursor: pointer; border: 2px solid transparent; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-gold { background: var(--gold-light); color: var(--navy); }
+    .btn-outline { border-color: rgba(255,255,255,0.52); color: white; }
+    .hero-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); padding: 30px; border-radius: 26px; backdrop-filter: blur(8px); box-shadow: 0 24px 60px rgba(0,0,0,0.22); }
+    .hero-seal { width: 210px; height: 210px; margin: 0 auto 26px; object-fit: contain; }
+    .hero-fallback { width: 210px; height: 210px; border-radius: 50%; border: 7px solid var(--gold); margin: 0 auto 26px; display: none; place-items: center; text-align: center; color: var(--gold-light); font-size: 3rem; font-weight: 900; box-shadow: inset 0 0 0 5px var(--navy), inset 0 0 0 8px var(--gold); }
+    .hero-card h3 { color: var(--gold-light); font-size: 1.45rem; margin-bottom: 10px; text-align: center; }
+    .hero-card p { color: #e7edf6; text-align: center; }
+
+    .trust-strip { background: var(--gold); color: var(--navy); padding: 21px 0; }
+    .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; text-align: center; font-weight: 900; font-size: 0.93rem; }
+    .cards-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .cards-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .card { background: white; border: 1px solid #e1e6ed; border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); }
+    .card-number { width: 42px; height: 42px; border-radius: 50%; background: var(--navy); color: var(--gold-light); display: grid; place-items: center; font-weight: 900; margin-bottom: 18px; }
+    .card h3 { color: var(--navy); font-size: 1.16rem; margin-bottom: 11px; }
+    .card p { color: var(--muted); }
+
+    .ai-section { background: var(--cream); }
+    .feature-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 50px; align-items: center; }
+    .feature-panel { background: var(--navy); color: white; padding: 38px; border-radius: 26px; box-shadow: var(--shadow); }
+    .feature-panel .eyebrow { color: var(--gold-light); }
+    .feature-panel h2 { font-size: clamp(2rem, 4vw, 3.3rem); line-height: 1.08; margin-bottom: 18px; }
+    .feature-panel p { color: #dfe7f2; margin-bottom: 22px; }
+    .trial-box { background: rgba(244,196,74,0.13); border: 1px solid rgba(244,196,74,0.42); border-radius: 16px; padding: 20px; margin-top: 24px; }
+    .trial-box strong { color: var(--gold-light); display: block; margin-bottom: 5px; }
+    .check-list { list-style: none; display: grid; gap: 14px; }
+    .check-list li { position: relative; padding-left: 30px; color: var(--text); }
+    .check-list li::before { content: "✓"; position: absolute; left: 0; color: var(--gold); font-weight: 900; }
+
+    .help-section { background: var(--white); }
+    .help-card { position: relative; overflow: hidden; }
+    .help-card::after { content: ""; position: absolute; height: 5px; left: 0; right: 0; bottom: 0; background: var(--gold); }
+    .help-card a { color: var(--gold); display: inline-block; margin-top: 15px; font-weight: 900; }
+
+    .resources { background: #f3f6fa; }
+    .resource-card { min-height: 250px; display: flex; flex-direction: column; }
+    .resource-card .resource-label { color: var(--gold); font-weight: 900; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; }
+    .resource-card a { margin-top: auto; padding-top: 20px; color: var(--navy); font-weight: 900; }
+    .resource-card.books-feature { border: 2px solid rgba(217,166,46,0.7); }
+    .resource-card.books-feature a { color: #9b6e00; }
+
+    .human-help { background: var(--navy); color: white; }
+    .human-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 50px; align-items: center; }
+    .human-help h2 { color: white; font-size: clamp(2.1rem, 4vw, 3.3rem); line-height: 1.08; margin-bottom: 18px; }
+    .human-help p { color: #dae4f0; }
+    .human-card { background: white; color: var(--text); padding: 30px; border-radius: 22px; }
+    .human-card h3 { color: var(--navy); margin-bottom: 12px; }
+
+    .audience-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .audience-card { background: var(--cream); border-radius: 16px; padding: 24px; border-top: 4px solid var(--gold); }
+    .audience-card h3 { color: var(--navy); margin-bottom: 8px; }
+
+    .disclaimer { padding: 50px 0; background: #eef2f7; }
+    .disclaimer-box { border-left: 5px solid var(--gold); padding: 25px 28px; background: white; border-radius: 12px; }
+    .disclaimer-box h3 { color: var(--navy); margin-bottom: 10px; }
+    .disclaimer-box p { color: var(--muted); font-size: 0.92rem; }
+
+    .final-cta { background: linear-gradient(rgba(8,27,53,0.92), rgba(8,27,53,0.92)), linear-gradient(135deg, #122f55, #071a31); color: white; text-align: center; padding: 90px 0; }
+    .final-cta h2 { font-size: clamp(2.4rem, 5vw, 4.2rem); line-height: 1.05; margin-bottom: 18px; }
+    .final-cta p { max-width: 720px; margin: 0 auto 28px; color: #dce5f1; font-size: 1.08rem; }
+
+    .contact-section { background: white; }
+    .contact-grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 32px; }
+    .contact-panel { background: var(--navy); color: white; border-radius: 22px; padding: 38px; }
+    .contact-panel h3 { font-size: 2rem; line-height: 1.15; margin-bottom: 14px; }
+    .contact-panel p { color: #dce5ef; }
+    .contact-link { display: block; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.14); font-weight: 800; }
+    .contact-link span { color: var(--gold-light); }
+    .form-card { border: 1px solid #dfe4eb; border-radius: 22px; padding: 34px; box-shadow: var(--shadow); }
+    .form-card h3 { color: var(--navy); margin-bottom: 20px; }
+    .form-grid { display: grid; gap: 17px; }
+    .field label { display: block; color: var(--navy); font-weight: 900; font-size: 0.86rem; margin-bottom: 6px; }
+    .field input, .field textarea { width: 100%; border: 1px solid #ccd4de; border-radius: 10px; padding: 13px 14px; outline: none; }
+    .field textarea { min-height: 130px; resize: vertical; }
+    .field input:focus, .field textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(217,166,46,0.14); }
+    .form-note { color: var(--muted); font-size: 0.8rem; margin-top: 12px; }
+
+    .footer { background: #041327; color: #bcc8d8; padding: 36px 0; }
+    .footer-grid { display: flex; justify-content: space-between; gap: 30px; align-items: center; }
+    .footer strong { color: white; }
+    .footer a { color: var(--gold-light); font-weight: 900; }
+    .footer-links { display: flex; gap: 18px; flex-wrap: wrap; align-items: center; }
+
+    @media (max-width: 1080px) {
+      .desktop-nav, .header-cta { display: none; }
+      .menu-button { display: flex; }
+    }
+    @media (max-width: 980px) {
+      .hero-grid, .feature-grid, .human-grid, .contact-grid { grid-template-columns: 1fr; }
+      .hero-card { max-width: 560px; }
+      .cards-4, .audience-grid { grid-template-columns: repeat(2, 1fr); }
+      .cards-3 { grid-template-columns: 1fr; }
+      .trust-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 650px) {
+      .container { width: min(100% - 28px, 1180px); }
+      .header-inner { min-height: 74px; }
+      .brand { min-width: 0; }
+      .brand-logo-wrap, .brand-logo, .fallback-logo { width: 48px; height: 48px; flex-basis: 48px; }
+      .brand-copy strong { font-size: 0.8rem; }
+      .brand-copy span { font-size: 0.59rem; }
+      .hero { padding: 68px 0 62px; }
+      .hero h1 { font-size: 2.65rem; }
+      .hero-actions { display: grid; }
+      .btn { width: 100%; }
+      .section { padding: 68px 0; }
+      .cards-4, .audience-grid, .trust-grid { grid-template-columns: 1fr; }
+      .hero-card, .feature-panel, .contact-panel, .form-card { padding: 26px; }
+      .hero-seal, .hero-fallback { width: 170px; height: 170px; }
+      .footer-grid { flex-direction: column; align-items: flex-start; }
+    }
+  
+.lang-tab{display:inline-flex;gap:8px;align-items:center;font-size:14px;margin-left:14px}
+.lang-tab a{color:#5a6a7a;text-decoration:none;font-weight:600}
+.lang-tab a.lang-active{color:#0d2b45;border-bottom:3px solid #d4af37;padding-bottom:2px}
+.lang-tab .lang-sep{color:#c8cdd2}
+.pa-block{background:#faf8f4}
+.pa-panels{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin:6px 0 26px}
+.pa-panels img{width:min(340px,44vw);aspect-ratio:3/4;object-fit:cover;border-radius:14px;box-shadow:0 10px 30px rgba(13,43,69,.18)}
+.pa-block .section-title{text-align:center}
+.page-hero{background:#0d2b45;color:#fff;padding:56px 0 40px}
+.page-hero h1{color:#fff;margin:0 0 10px}
+.page-hero p{color:#dfe7ee;max-width:760px}
+.prose{max-width:820px}
+.prose h2{margin-top:36px}
+.prose ul{line-height:1.65}
+.prose p{line-height:1.7}
+.note-box{background:#fdf6e0;border:1px solid #e6cf7a;border-radius:12px;padding:16px 20px;margin:20px 0}
+.soon-wrap{min-height:100vh;background:#0d2b45;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 20px}
+.soon-wrap img{width:150px;height:150px}
+.soon-wrap h1{color:#fff;font-size:44px;margin:18px 0 6px}
+.soon-wrap .tag{color:#d4af37;font-size:19px;margin:0 0 22px}
+.soon-wrap p{color:#dfe7ee;max-width:560px;line-height:1.7}
+</style>
+</head>
+<body>
+<header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/" aria-label="The Insurance Claims Guide home">
+        <div class="brand-logo-wrap">
+          <img src="icg-logo.png" alt="The Insurance Claims Guide" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+          <div class="fallback-logo">ICG</div>
+        </div>
+        <div class="brand-copy">
+          <strong>The Insurance Claims Guide</strong>
+          <span>Your Roadmap to Recovery</span>
+        </div>
+      </a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="/#about">What ICG Does</a>
+        <a href="/#ai">AI Companion</a>
+        <a href="/#help">Claim Help</a>
+        <a href="/#resources">Resources</a>
+        <a class="books-nav" href="/books/">Our Books</a>
+        <a href="/#human">Human Help</a>
+        <a href="for-adjusters.html">For Adjusters</a>
+      </nav>
+      <a class="header-cta" href="/#contact">Do You Need Help With a Claim?</a>
+      <span class="lang-tab"><a href="/" class="lang-active">English</a><span class="lang-sep">|</span><a href="index-es.html">Español</a></span>
+      <button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">☰</button>
+    </div>
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+      <a href="/#about">What ICG Does</a>
+      <a href="/#ai">AI Companion</a>
+      <a href="/#help">Claim Help</a>
+      <a href="/#resources">Resources</a>
+      <a href="/books/">Our Books</a>
+      <a href="/#human">Human Help</a>
+      <a href="for-adjusters.html">For Adjusters</a>
+      <a href="/#contact">Do You Need Help With a Claim?</a>
+    </nav>
+  </header>
+
+<section class="page-hero"><div class="container">
+<p class="eyebrow">Coming to ICG</p>
+<h1>For Adjusters</h1>
+<p>Learn the craft from experience — mentoring for working and aspiring adjusters, built by The Insurance Claims Guide.</p>
+</div></section>
+<section class="section"><div class="container prose">
+<h2>Why this exists</h2>
+<p>Behind The Insurance Claims Guide is more than a decade of hands-on claims work — examining and adjusting claims up to $500,000. The books teach policyholders. This page is for the other side of the table: adjusters who want to get better at the job the right way.</p>
+<h2>What is being built</h2>
+<ul>
+<li><strong>Adjuster Mentor, inside the Companion.</strong> Ask questions about scoping, documentation, policy interpretation, and professional practice — and get answers drawn from a dedicated professional knowledge base, separate from the consumer library.</li>
+<li><strong>A weekly group mentor hour.</strong> One hour, many adjusters, real questions answered live — bring the claim problem that is stuck in your week. (Carrier and firm guidelines always govern your work; mentoring teaches craft, never overrides your instructions.)</li>
+<li><strong>Deployment readiness.</strong> Storm-season preparation for independent adjusters: what firms expect, how to document so your files survive review, and how to stay accurate when the volume hits.</li>
+</ul>
+<h2>How we teach</h2>
+<p>Accuracy, documentation, and ethics — the habits that make an adjuster's files stand up. We do not teach underpayment tactics, and we never will.</p>
+<div class="note-box"><strong>Status:</strong> in development. Join the adjuster list and you will be first to know when the mentor opens.</div>
+<div class="hero-actions"><a class="btn btn-gold" href="mailto:thehomeownersclaimsguide@erantpropertyservices.com?subject=ICG%20For%20Adjusters%20List">Join the Adjuster List</a></div>
+</div></section>
+<footer class="footer">
+    <div class="container footer-grid">
+      <div><strong>The Insurance Claims Guide</strong><br />Your Roadmap to Recovery</div>
+      <div class="footer-links">
+        <a href="/books/">Our Books</a>
+        <span>•</span>
+        <a href="ai-and-privacy.html">AI & Privacy</a>
+        <span>•</span>
+        <a href="for-adjusters.html">For Adjusters</a>
+        <span>•</span>
+        <span>An ERANT Property Services venture — <a href="https://www.erantpropertyservices.com/">Visit ERANT Property Services</a></span>
+      </div>
+    </div>
+  </footer>
+<script>
+    const menuButton = document.getElementById("menuButton");
+    const mobileMenu = document.getElementById("mobileMenu");
+    menuButton.addEventListener("click", function () {
+      const isOpen = mobileMenu.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", isOpen);
+      menuButton.textContent = isOpen ? "✕" : "☰";
+    });
+    document.querySelectorAll(".mobile-menu a").forEach(function(link) {
+      link.addEventListener("click", function() {
+        mobileMenu.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.textContent = "☰";
+      });
+    });
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const subject = document.getElementById("subject").value.trim();
+      const message = document.getElementById("message").value.trim();
+      const mailSubject = "ICG Website Inquiry - " + subject;
+      const mailBody = "Name: " + name + "\n" + "Email: " + email + "\n\n" + "What I need help with:\n" + subject + "\n\n" + "Details:\n" + message;
+      window.location.href = "mailto:thehomeownersclaimsguide@erantpropertyservices.com" + "?subject=" + encodeURIComponent(mailSubject) + "&body=" + encodeURIComponent(mailBody);
+    });
+  </script>
+</body>
+</html>
