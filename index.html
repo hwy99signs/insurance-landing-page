@@ -290,6 +290,10 @@
 
 /* Logo sits clean in its frame — old 1.25x zoom removed (2026-10-12) */
 .brand-logo{transform:none}
+
+/* Anchor jumps land below the statement header, never under it (2026-10-12) */
+html{scroll-padding-top:190px}
+@media (max-width:720px){ html{scroll-padding-top:178px} }
 </style>
 </head>
 
