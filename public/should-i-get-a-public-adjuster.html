@@ -294,9 +294,10 @@
 /* Logo sits clean in its frame — old 1.25x zoom removed (2026-10-12) */
 .brand-logo{transform:none}
 
-/* Anchor jumps land below the statement header, never under it (2026-10-12) */
-html{scroll-padding-top:190px}
-@media (max-width:720px){ html{scroll-padding-top:178px} }
+/* Anchor landings — ONE mechanism (owner report 2026-10-15: jumps landed too low with the page above showing, because html scroll-padding-top and section scroll-margin-top stacked). Sections stop just below the sticky header; heading fully visible, no previous section peeking. */
+section[id]{scroll-margin-top:154px}
+@media (max-width:1080px){ section[id]{scroll-margin-top:112px} }
+@media (max-width:720px){ section[id]{scroll-margin-top:156px} }
 
 /* Realignment: no page wider than the screen; breathing room at the edges (2026-10-12) */
 .page p a, .page li a, .card a, .pa-example a { overflow-wrap: anywhere; }
@@ -314,7 +315,7 @@ a[href^="mailto:"]{overflow-wrap:anywhere}
 <body>
 <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="/" aria-label="The Insurance Claims Guide home">
+      <a class="brand" href="index.html" aria-label="The Insurance Claims Guide home">
         <div class="brand-logo-wrap">
           <img src="icg-logo.png" alt="The Insurance Claims Guide" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
           <div class="fallback-logo">ICG</div>
@@ -325,25 +326,25 @@ a[href^="mailto:"]{overflow-wrap:anywhere}
         </div>
       </a>
       <nav class="desktop-nav" aria-label="Main navigation">
-        <a href="/#about">What ICG Does</a>
-        <a href="/#ai">AI Companion</a>
-        <a href="/#help">Claim Help</a>
-        <a href="/#resources">Resources</a>
+        <a href="index.html#about">What ICG Does</a>
+        <a href="index.html#ai">AI Claim Companion</a>
+        <a href="index.html#help">Claim Help</a>
+        <a href="index.html#resources">Resources</a>
         <a class="books-nav" href="/books/">Our Books</a>
-        <a href="/#human">Human Help</a>
+        <a href="index.html#human">Human Help</a>
       </nav>
-      <a class="header-cta" href="/#contact">Do You Need Help With a Claim?</a>
-      <span class="lang-tab"><a href="/" class="lang-active">English</a><span class="lang-sep">|</span><a href="index-es.html">Español</a></span>
+      <a class="header-cta" href="index.html#contact">Do You Need Help With a Claim?</a>
+      <span class="lang-tab"><a href="index.html" class="lang-active">English</a><span class="lang-sep">|</span><a href="index-es.html">Español</a></span>
       <button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">☰</button>
     </div>
     <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
-      <a href="/#about">What ICG Does</a>
-      <a href="/#ai">AI Companion</a>
-      <a href="/#help">Claim Help</a>
-      <a href="/#resources">Resources</a>
+      <a href="index.html#about">What ICG Does</a>
+      <a href="index.html#ai">AI Claim Companion</a>
+      <a href="index.html#help">Claim Help</a>
+      <a href="index.html#resources">Resources</a>
       <a href="/books/">Our Books</a>
-      <a href="/#human">Human Help</a>
-      <a href="/#contact">Do You Need Help With a Claim?</a>
+      <a href="index.html#human">Human Help</a>
+      <a href="index.html#contact">Do You Need Help With a Claim?</a>
     </nav>
   </header>
 
@@ -435,7 +436,7 @@ a[href^="mailto:"]{overflow-wrap:anywhere}
 <li><strong>An attorney.</strong> For legal disputes — bad faith, coverage litigation — that is a lawyer's work, not an adjuster's.</li>
 <li><strong>Your state Department of Insurance.</strong> Filing a complaint is free, and regulators track every one.</li>
 </ul>
-<div class="note-box">Not sure which way to go? Start with the education. The <a href="/#ai">ICG AI Claim Companion</a> can help you understand your claim well enough to make this decision calmly — and a well-informed policyholder makes a better decision either way.</div>
+<div class="note-box">Not sure which way to go? Start with the education. The <a href="index.html#ai">ICG AI Claim Companion</a> can help you understand your claim well enough to make this decision calmly — and a well-informed policyholder makes a better decision either way.</div>
 <p><em>Educational information only. ICG is not a public adjuster and does not negotiate or settle claims.</em></p>
 </div></section>
 <footer class="footer">
@@ -446,6 +447,7 @@ a[href^="mailto:"]{overflow-wrap:anywhere}
         <span>•</span>
         <a href="ai-and-privacy.html">AI & Privacy</a>
         <span>•</span>
+        <a href="know-your-rights.html">Know Your Rights</a>
         <span>•</span>
         <span>An ERANT Property Services venture — <a href="https://www.erantpropertyservices.com/">Visit ERANT Property Services</a></span>
       </div>
@@ -466,7 +468,8 @@ a[href^="mailto:"]{overflow-wrap:anywhere}
         menuButton.textContent = "☰";
       });
     });
-    document.getElementById("contactForm").addEventListener("submit", function(e) {
+    const contactForm = document.getElementById("contactForm");
+    if (contactForm) contactForm.addEventListener("submit", function(e) {
       e.preventDefault();
       const name = document.getElementById("name").value.trim();
       const email = document.getElementById("email").value.trim();

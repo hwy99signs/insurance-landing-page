@@ -291,9 +291,10 @@
 /* Logo sits clean in its frame — old 1.25x zoom removed (2026-10-12) */
 .brand-logo{transform:none}
 
-/* Anchor jumps land below the statement header, never under it (2026-10-12) */
-html{scroll-padding-top:190px}
-@media (max-width:720px){ html{scroll-padding-top:178px} }
+/* Anchor landings — ONE mechanism (owner report 2026-10-15: jumps landed too low with the page above showing, because html scroll-padding-top and section scroll-margin-top stacked). Sections stop just below the sticky header; heading fully visible, no previous section peeking. */
+section[id]{scroll-margin-top:154px}
+@media (max-width:1080px){ section[id]{scroll-margin-top:112px} }
+@media (max-width:720px){ section[id]{scroll-margin-top:156px} }
 
 /* Realignment: no page wider than the screen; breathing room at the edges (2026-10-12) */
 .page p a, .page li a, .card a, .pa-example a { overflow-wrap: anywhere; }
@@ -333,7 +334,7 @@ a[href^="mailto:"]{overflow-wrap:anywhere}
       </nav>
 
       <a class="header-cta" href="#contact">¿Necesita ayuda con un reclamo?</a>
-      <span class="lang-tab"><a href="/">English</a><span class="lang-sep">|</span><a href="index-es.html" class="lang-active">Español</a></span>
+      <span class="lang-tab"><a href="index.html">English</a><span class="lang-sep">|</span><a href="index-es.html" class="lang-active">Español</a></span>
       <button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">☰</button>
     </div>
 
@@ -461,7 +462,7 @@ a[href^="mailto:"]{overflow-wrap:anywhere}
         </div>
         <div class="cards-4">
           <article class="card resource-card books-feature"><p class="resource-label">Serie de libros</p><h3>Los libros de The Insurance Claims Guide</h3><p>Guías prácticas que convierten los temas complejos de seguros y reclamos de propiedad en información comprensible.</p><a href="/books/">Explorar nuestros libros →</a></article>
-          <article class="card resource-card"><p class="resource-label">Recurso para compradores de vivienda</p><h3>Edición para nuevos compradores de vivienda</h3><p>Aprenda qué inspeccionar, qué preguntas de cobertura hacer y qué temas de seguro pueden importar antes de comprar una vivienda.</p><a href="#contact">Más información →</a></article>
+          <article class="card resource-card"><p class="resource-label">Libro destacado</p><h3>The Insurance Claims Guide: New Home Buyer's Edition</h3><p>Aprenda qué inspeccionar, qué preguntas de cobertura hacer y qué temas de seguro pueden importar antes de comprar una vivienda.</p><a href="/books/">Ver el libro →</a></article>
           <article class="card resource-card"><p class="resource-label">Herramientas prácticas</p><h3>Listas de verificación y recursos de reclamos</h3><p>Herramientas de documentación de propiedad, listas de verificación previas a una pérdida, recursos para organizar reclamos y referencias educativas.</p><a href="#contact">Explorar recursos →</a></article>
           <article class="card resource-card"><p class="resource-label">Biblioteca de conocimiento en crecimiento</p><h3>Bóveda de conocimiento ICG</h3><p>Una base de conocimiento estructurada de educación sobre seguros, diseñada para apoyar al Asistente de Reclamos ICG con IA y a futuras herramientas de aprendizaje.</p><a href="#ai">Explorar el Asistente IA →</a></article>
         </div>
@@ -485,7 +486,7 @@ a[href^="mailto:"]{overflow-wrap:anywhere}
             <li>Explicar las secciones comunes de una estimación.</li>
             <li>Ayudar a preparar preguntas para el profesional adecuado.</li>
           </ul>
-          <div style="margin-top:24px;"><a class="btn btn-gold" href="/consultation-intake.html">Solicitar una consulta con una persona</a></div>
+          <div style="margin-top:24px;"><a class="btn btn-gold" href="consultation-intake.html">Solicitar una consulta con una persona</a></div>
         </div>
       </div>
     </section>
@@ -523,7 +524,7 @@ a[href^="mailto:"]{overflow-wrap:anywhere}
           <p>No necesita conocer la terminología correcta de seguros. Cuéntenos qué situación está enfrentando y qué parte del reclamo le causa confusión.</p>
           <a class="contact-link" href="mailto:thehomeownersclaimsguide@erantpropertyservices.com?subject=Insurance%20Claim%20Question"><strong>Preguntas sobre reclamos de seguro</strong> — <span>Escribir a The Insurance Claims Guide</span></a>
           <a class="contact-link" href="mailto:thehomeownersclaimsguide@erantpropertyservices.com?subject=ICG%20AI%20Claim%20Companion"><strong>Asistente de Reclamos IA</strong> — <span>Unirme a la lista de lanzamiento</span></a>
-          <a class="contact-link" href="/consultation-intake.html"><strong>¿Necesita ayuda de una persona?</strong> — <span>Solicitar una consulta</span></a>
+          <a class="contact-link" href="consultation-intake.html"><strong>¿Necesita ayuda de una persona?</strong> — <span>Solicitar una consulta</span></a>
           <p class="eyebrow" style="color:#f4c44a;text-align:center;margin-top:32px;margin-bottom:0;">Prepárese. Infórmese. Obtenga resultados.</p>
         </div>
 
@@ -550,6 +551,7 @@ a[href^="mailto:"]{overflow-wrap:anywhere}
         <span>•</span>
         <a href="ai-and-privacy.html">IA y privacidad</a>
         <span>•</span>
+        <a href="know-your-rights.html">Conozca sus derechos</a>
         <span>•</span>
         <span>Un emprendimiento de ERANT Property Services — <a href="https://www.erantpropertyservices.com/">Visitar ERANT Property Services</a></span>
       </div>
@@ -571,7 +573,8 @@ a[href^="mailto:"]{overflow-wrap:anywhere}
         menuButton.textContent = "☰";
       });
     });
-    document.getElementById("contactForm").addEventListener("submit", function(e) {
+    const contactForm = document.getElementById("contactForm");
+    if (contactForm) contactForm.addEventListener("submit", function(e) {
       e.preventDefault();
       const name = document.getElementById("name").value.trim();
       const email = document.getElementById("email").value.trim();
