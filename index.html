@@ -291,9 +291,10 @@
 /* Logo sits clean in its frame — old 1.25x zoom removed (2026-10-12) */
 .brand-logo{transform:none}
 
-/* Anchor jumps land below the statement header, never under it (2026-10-12) */
-html{scroll-padding-top:190px}
-@media (max-width:720px){ html{scroll-padding-top:178px} }
+/* Anchor landings — ONE mechanism (owner report 2026-10-15: jumps landed too low with the page above showing, because html scroll-padding-top and section scroll-margin-top stacked). Sections stop just below the sticky header; heading fully visible, no previous section peeking. */
+section[id]{scroll-margin-top:154px}
+@media (max-width:1080px){ section[id]{scroll-margin-top:112px} }
+@media (max-width:720px){ section[id]{scroll-margin-top:156px} }
 
 /* Realignment: no page wider than the screen; breathing room at the edges (2026-10-12) */
 .page p a, .page li a, .card a, .pa-example a { overflow-wrap: anywhere; }
@@ -312,7 +313,7 @@ a[href^="mailto:"]{overflow-wrap:anywhere}
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="/" aria-label="The Insurance Claims Guide home">
+      <a class="brand" href="index.html" aria-label="The Insurance Claims Guide home">
         <div class="brand-logo-wrap">
           <img src="icg-logo.png" alt="The Insurance Claims Guide" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
           <div class="fallback-logo">ICG</div>
@@ -325,7 +326,7 @@ a[href^="mailto:"]{overflow-wrap:anywhere}
 
       <nav class="desktop-nav" aria-label="Main navigation">
         <a href="#about">What ICG Does</a>
-        <a href="#ai">AI Companion</a>
+        <a href="#ai">AI Claim Companion</a>
         <a href="#help">Claim Help</a>
         <a href="#resources">Resources</a>
         <a class="books-nav" href="/books/">Our Books</a>
@@ -333,7 +334,7 @@ a[href^="mailto:"]{overflow-wrap:anywhere}
       </nav>
 
       <a class="header-cta" href="#contact">Do You Need Help With a Claim?</a>
-      <span class="lang-tab"><a href="/" class="lang-active">English</a><span class="lang-sep">|</span><a href="index-es.html">Español</a></span>
+      <span class="lang-tab"><a href="index.html" class="lang-active">English</a><span class="lang-sep">|</span><a href="index-es.html">Español</a></span>
       <button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">☰</button>
     </div>
 
@@ -461,7 +462,7 @@ a[href^="mailto:"]{overflow-wrap:anywhere}
         </div>
         <div class="cards-4">
           <article class="card resource-card books-feature"><p class="resource-label">Book Series</p><h3>The Insurance Claims Guide Books</h3><p>Practical guides that break complex insurance and property-claim topics into understandable information.</p><a href="/books/">Explore Our Books →</a></article>
-          <article class="card resource-card"><p class="resource-label">Homebuyer Resource</p><h3>New Homebuyer's Edition</h3><p>Learn what to inspect, what coverage questions to ask and what insurance issues may matter before purchasing a home.</p><a href="#contact">Learn More →</a></article>
+          <article class="card resource-card"><p class="resource-label">Book Spotlight</p><h3>The Insurance Claims Guide: New Home Buyer's Edition</h3><p>Learn what to inspect, what coverage questions to ask and what insurance issues may matter before purchasing a home.</p><a href="/books/">See the Book →</a></article>
           <article class="card resource-card"><p class="resource-label">Practical Tools</p><h3>Checklists & Claim Resources</h3><p>Property documentation tools, pre-loss checklists, claim organization resources and educational references.</p><a href="#contact">Explore Resources →</a></article>
           <article class="card resource-card"><p class="resource-label">Growing Knowledge Library</p><h3>ICG Knowledge Vault</h3><p>A structured insurance-education knowledge base designed to support the ICG AI Claim Companion and future learning tools.</p><a href="#ai">Explore the AI Companion →</a></article>
         </div>
@@ -485,7 +486,7 @@ a[href^="mailto:"]{overflow-wrap:anywhere}
             <li>Explaining common estimate sections.</li>
             <li>Helping prepare questions for the appropriate professional.</li>
           </ul>
-          <div style="margin-top:24px;"><a class="btn btn-gold" href="/consultation-intake.html">Request Human Consultation</a></div>
+          <div style="margin-top:24px;"><a class="btn btn-gold" href="consultation-intake.html">Request Human Consultation</a></div>
         </div>
       </div>
     </section>
@@ -523,7 +524,7 @@ a[href^="mailto:"]{overflow-wrap:anywhere}
           <p>You do not need to know the correct insurance terminology. Tell us what situation you are dealing with and what part of the claim is confusing you.</p>
           <a class="contact-link" href="mailto:thehomeownersclaimsguide@erantpropertyservices.com?subject=Insurance%20Claim%20Question"><strong>Insurance Claim Questions</strong> — <span>Email The Insurance Claims Guide</span></a>
           <a class="contact-link" href="mailto:thehomeownersclaimsguide@erantpropertyservices.com?subject=ICG%20AI%20Claim%20Companion"><strong>AI Claim Companion</strong> — <span>Join the Launch List</span></a>
-          <a class="contact-link" href="/consultation-intake.html"><strong>Need Human Help?</strong> — <span>Request Consultation</span></a>
+          <a class="contact-link" href="consultation-intake.html"><strong>Need Human Help?</strong> — <span>Request Consultation</span></a>
           <p class="eyebrow" style="color:#f4c44a;text-align:center;margin-top:32px;margin-bottom:0;">Be Prepared. Be Informed. Get Results.</p>
         </div>
 
@@ -550,6 +551,7 @@ a[href^="mailto:"]{overflow-wrap:anywhere}
         <span>•</span>
         <a href="ai-and-privacy.html">AI &amp; Privacy</a>
         <span>•</span>
+        <a href="know-your-rights.html">Know Your Rights</a>
         <span>•</span>
         <span>An ERANT Property Services venture — <a href="https://www.erantpropertyservices.com/">Visit ERANT Property Services</a></span>
       </div>
@@ -571,7 +573,8 @@ a[href^="mailto:"]{overflow-wrap:anywhere}
         menuButton.textContent = "☰";
       });
     });
-    document.getElementById("contactForm").addEventListener("submit", function(e) {
+    const contactForm = document.getElementById("contactForm");
+    if (contactForm) contactForm.addEventListener("submit", function(e) {
       e.preventDefault();
       const name = document.getElementById("name").value.trim();
       const email = document.getElementById("email").value.trim();

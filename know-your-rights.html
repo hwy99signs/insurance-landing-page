@@ -282,9 +282,10 @@
 /* Logo sits clean in its frame — old 1.25x zoom removed (2026-10-12) */
 .brand-logo{transform:none}
 
-/* Anchor jumps land below the statement header, never under it (2026-10-12) */
-html{scroll-padding-top:190px}
-@media (max-width:720px){ html{scroll-padding-top:178px} }
+/* Anchor landings — ONE mechanism (owner report 2026-10-15: jumps landed too low with the page above showing, because html scroll-padding-top and section scroll-margin-top stacked). Sections stop just below the sticky header; heading fully visible, no previous section peeking. */
+section[id]{scroll-margin-top:154px}
+@media (max-width:1080px){ section[id]{scroll-margin-top:112px} }
+@media (max-width:720px){ section[id]{scroll-margin-top:156px} }
 
 /* Realignment: no page wider than the screen; breathing room at the edges (2026-10-12) */
 .page p a, .page li a, .card a, .pa-example a { overflow-wrap: anywhere; }
@@ -314,10 +315,10 @@ a[href^="mailto:"]{overflow-wrap:anywhere}
       </a>
       <nav class="desktop-nav" aria-label="Main navigation">
         <a href="index.html#about">What ICG Does</a>
-        <a href="index.html#ai">AI Companion</a>
+        <a href="index.html#ai">AI Claim Companion</a>
         <a href="index.html#help">Claim Help</a>
         <a href="index.html#resources">Resources</a>
-        <a class="books-nav" href="books.html">Our Books</a>
+        <a class="books-nav" href="/books/">Our Books</a>
         <a href="index.html#human">Human Help</a>
       </nav>
       <a class="header-cta" href="index.html#contact">Do You Need Help With a Claim?</a>
@@ -326,10 +327,10 @@ a[href^="mailto:"]{overflow-wrap:anywhere}
     </div>
     <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
       <a href="index.html#about">What ICG Does</a>
-      <a href="index.html#ai">AI Companion</a>
+      <a href="index.html#ai">AI Claim Companion</a>
       <a href="index.html#help">Claim Help</a>
       <a href="index.html#resources">Resources</a>
-      <a href="books.html">Our Books</a>
+      <a href="/books/">Our Books</a>
       <a href="index.html#human">Human Help</a>
       <a href="index.html#contact">Do You Need Help With a Claim?</a>
     </nav>
@@ -378,9 +379,11 @@ a[href^="mailto:"]{overflow-wrap:anywhere}
     <div class="container footer-grid">
       <div><strong>The Insurance Claims Guide</strong><br />Your Roadmap to Recovery</div>
       <div class="footer-links">
-        <a href="books.html">Our Books</a>
+        <a href="/books/">Our Books</a>
         <span>•</span>
         <a href="ai-and-privacy.html">AI &amp; Privacy</a>
+        <span>•</span>
+        <a href="know-your-rights.html">Know Your Rights</a>
         <span>•</span>
         <span>An ERANT Property Services venture — <a href="https://www.erantpropertyservices.com/">Visit ERANT Property Services</a></span>
       </div>
