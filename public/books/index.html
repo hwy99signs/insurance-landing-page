@@ -80,6 +80,8 @@
     .amazon-btn{background:var(--gold-light);color:var(--navy);padding:13px 16px;border-radius:12px;font-weight:900;text-align:center}
     .amazon-btn:hover{background:var(--gold)}
     .coming-btn{background:#eef2f7;color:#7a8493;padding:13px 16px;border-radius:12px;font-weight:900;text-align:center;cursor:default}
+    .book-video{margin-top:16px}
+    .book-video video{width:100%;aspect-ratio:9/16;max-height:430px;object-fit:contain;background:var(--navy);border-radius:12px;display:block}
     .amazon-note{font-size:.78rem;color:#8a93a1;text-align:center}
 
     .book-purpose{background:var(--cream);padding:82px 0}
@@ -103,7 +105,102 @@
 
     @media(max-width:1040px){.desktop-nav,.header-cta{display:none}.menu-button{display:flex}.hero-grid{grid-template-columns:1fr}.hero-logo-panel{max-width:500px}.book-grid{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:700px){.container{width:min(100% - 28px,1180px)}.brand{min-width:0}.brand-logo-wrap,.brand-logo,.fallback-logo{width:48px;height:48px;flex-basis:48px}.brand-copy strong{font-size:.8rem}.brand-copy span{font-size:.59rem}.books-hero{padding:62px 0}.book-section{padding:62px 0}.book-grid,.purpose-grid{grid-template-columns:1fr}.book-art{height:360px}.hero-actions{display:grid}.btn{width:100%}.footer-grid{flex-direction:column;align-items:flex-start}}
-  </style>
+  /* ===== Header fix — one clean row at every width (owner sketch, 2026-10-12) ===== */
+.header-inner{flex-wrap:nowrap}
+.brand{min-width:0}
+.brand-copy span{white-space:nowrap}
+.desktop-nav{flex-wrap:nowrap}
+.desktop-nav a{white-space:nowrap}
+.lang-tab{flex:0 0 auto;white-space:nowrap}
+@media (min-width:1081px){ .site-header .container{width:min(100% - 32px,1300px)} }
+@media (max-width:1420px){
+  .header-inner{gap:18px}
+  .desktop-nav{gap:13px}
+  .desktop-nav a{font-size:.85rem}
+  .header-cta{padding:10px 14px;font-size:.8rem}
+  .brand-copy strong{font-size:.9rem}
+  .brand-copy span{font-size:.64rem;letter-spacing:.07em}
+}
+@media (max-width:1080px){ .header-inner{gap:14px} }
+@media (max-width:720px){
+  .header-inner{gap:10px;min-height:64px}
+  .brand{gap:9px;flex:1 1 auto}
+  .brand-logo-wrap,.brand-logo,.fallback-logo{width:44px;height:44px;flex-basis:44px}
+  .brand-copy strong{font-size:.87rem;line-height:1.13}
+  .brand-copy span{font-size:.54rem;letter-spacing:.03em;line-height:1.3}
+  .lang-tab{font-size:12.5px;gap:6px;margin-left:0}
+  .menu-button{width:42px;height:42px;flex:0 0 auto}
+}
+.pa-example{background:#fdf6e0;border:1.5px solid #d4af37;border-radius:14px;padding:18px 20px;margin:18px 0}
+.pa-example h3{margin:0 0 8px;color:#0d2b45;font-size:1.02rem}
+.pa-example p{margin:0 0 8px}
+.pa-example p:last-child{margin-bottom:0}
+
+/* ===== Header as the opening statement — big brand (owner direction, 2026-10-12) ===== */
+.brand-logo-wrap,.brand-logo,.fallback-logo{width:76px;height:76px;flex-basis:76px}
+.brand{gap:15px}
+.brand-copy strong{font-size:1.24rem;line-height:1.12}
+.brand-copy span{font-size:.74rem;letter-spacing:.08em}
+.header-inner{min-height:96px}
+@media (max-width:1420px){
+  .desktop-nav{gap:10px}
+  .desktop-nav a{font-size:.82rem}
+  .header-cta{padding:10px 13px;font-size:.78rem}
+  .brand-copy strong{font-size:1.15rem}
+  .brand-copy span{font-size:.7rem}
+}
+@media (max-width:720px){
+  .header-inner{flex-wrap:wrap;row-gap:9px;min-height:0;padding-top:13px;padding-bottom:11px}
+  .brand{flex:1 1 100%;gap:12px;order:1}
+  .brand-logo-wrap,.brand-logo,.fallback-logo{width:80px;height:80px;flex-basis:80px}
+  .brand-copy strong{font-size:1.32rem;line-height:1.1}
+  .brand-copy span{font-size:.68rem;letter-spacing:.05em}
+  .lang-tab{order:2;font-size:13.5px;margin-left:2px}
+  .menu-button{order:3;margin-left:auto;width:44px;height:44px}
+}
+
+/* ===== Header statement — desktop polish (2026-10-12) ===== */
+@media (min-width:1081px){
+  .brand-copy strong{white-space:nowrap}
+  .brand-logo-wrap,.brand-logo,.fallback-logo{width:70px;height:70px;flex-basis:70px}
+}
+@media (min-width:1081px) and (max-width:1420px){
+  .brand-copy strong{font-size:1.04rem}
+  .brand-copy span{font-size:.66rem;letter-spacing:.06em}
+  .desktop-nav{gap:9px}
+  .desktop-nav a{font-size:.8rem}
+}
+
+/* ===== RESCALE — bigger type, room by restructuring, never by shrinking (owner standard, 2026-10-12) ===== */
+.desktop-nav a{font-size:.95rem}
+.desktop-nav{gap:20px}
+.header-cta{font-size:.88rem;padding:12px 18px}
+.brand-copy strong{font-size:1.24rem}
+.brand-copy span{font-size:.74rem;letter-spacing:.08em}
+@media (min-width:1081px){
+  .header-inner{flex-wrap:wrap;row-gap:2px;padding-top:10px}
+  .desktop-nav{order:5;flex:1 1 100%;justify-content:space-between;padding:6px 0 12px}
+}
+@media (max-width:720px){
+  html{font-size:18px}
+  .lang-tab{font-size:15px}
+  .pa-example p,.pa-example li{font-size:1.04rem;line-height:1.65}
+  .pa-fig td{font-size:1.04rem}
+}
+
+/* Logo sits clean in its frame — old 1.25x zoom removed (2026-10-12) */
+.brand-logo{transform:none}
+
+/* Anchor jumps land below the statement header, never under it (2026-10-12) */
+html{scroll-padding-top:190px}
+@media (max-width:720px){ html{scroll-padding-top:178px} }
+
+@media (max-width:720px){ .book-card p, .section p, .hero p { font-size:1.05rem; line-height:1.65 } }
+
+.wrap a{overflow-wrap:anywhere}
+a[href^="mailto:"]{overflow-wrap:anywhere}
+@media (max-width:400px){ .brand-copy span{white-space:normal;line-height:1.35} }
+</style>
 </head>
 <body>
   <header class="site-header">
@@ -124,6 +221,7 @@
         <a href="/#human">Human Help</a>
       </nav>
       <a class="header-cta" href="/#contact">Do You Need Help With a Claim?</a>
+      <span class="lang-tab"><a href="/" class="lang-active">English</a><span class="lang-sep">|</span><a href="/index-es.html">Español</a></span>
       <button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">☰</button>
     </div>
     <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
@@ -167,41 +265,72 @@
 
         <div class="book-grid">
           <article class="book-card">
-            <div class="book-art"><span class="status live">Available</span><img src="/images/homeowners_book.jpg" alt="Homeowners Dwelling Claims book cover" /></div>
+            <div class="book-art"><span class="status live">Available</span><img src="/images/homeowners-edition.jpg" alt="Homeowners Edition book cover" /></div>
             <div class="book-body">
-              <h3>Homeowners Dwelling Claims</h3>
-              <div class="hook">Avoid costly claim mistakes in the first 72 hours.</div>
+              <h3>Homeowners Edition</h3>
+              <div class="hook">What Homeowners Need to Know to Protect, Document, and Navigate Property Claims</div>
               <p>A practical guide to understanding coverage basics, documentation, estimates, settlement issues, and the steps homeowners should take after property damage.</p>
               <div class="book-actions"><a class="amazon-btn" href="https://www.amazon.com/dp/B0GL4X5LGR" target="_blank" rel="noopener noreferrer">Buy on Amazon →</a><div class="amazon-note">Amazon opens in a new tab.</div></div>
             </div>
           </article>
 
           <article class="book-card">
-            <div class="book-art"><span class="status live">Available</span><img src="/images/renters_book.png" alt="Renters Dwelling Claims book cover" /></div>
+            <div class="book-art"><span class="status live">Available</span><img src="/images/roof-damage-claims.jpg" alt="Roof Damage Claims book cover" /></div>
             <div class="book-body">
-              <h3>Renters Dwelling Claims</h3>
-              <div class="hook">Prepare, document, and understand your renter claim.</div>
+              <h3>Roof Damage Claims</h3>
+              <div class="hook">What Homeowners Need to Know, Document, and Do After Roof Damage</div>
+              <p>Focused help for storm damage, wear-and-tear disputes, inspections, depreciation, supplements, and roof-related coverage issues.</p>
+              <div class="book-actions"><a class="amazon-btn" href="https://www.amazon.com/dp/B0GY8SBXGC/ref=tmm_pap_swatch_0" target="_blank" rel="noopener noreferrer">Buy on Amazon →</a><div class="amazon-note">Amazon opens in a new tab.</div></div>
+              <div class="book-video"><video controls preload="metadata" playsinline poster="/images/roof-damage-claims.jpg" src="/videos/roof-damage-claims-promo.mp4" aria-label="Roof Damage Claims book video"></video></div>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <div class="book-art"><span class="status">Coming Soon</span><img src="/images/water-damage-claims.jpg" alt="Water Damage Claims book cover" /></div>
+            <div class="book-body">
+              <h3>Water Damage Claims</h3>
+              <div class="hook">What Homeowners Need to Know, Document, and Do After Water Damage</div>
+              <p>Detailed explanations of sudden and accidental water losses, mitigation, dry-out, mold concerns, exclusions, and scope review.</p>
+              <div class="book-actions"><div class="coming-btn">Coming Soon</div></div>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <div class="book-art"><span class="status live">Available</span><img src="/images/home-renters-claims.jpg" alt="Home Renters Claims book cover" /></div>
+            <div class="book-body">
+              <h3>Home Renters Claims</h3>
+              <div class="hook">What Renters Need to Know, Document, and Do After Damage or Loss</div>
               <p>Clear guidance for renters handling personal property damage, temporary living issues, claim documentation, communication, and common claim pitfalls.</p>
               <div class="book-actions"><a class="amazon-btn" href="https://www.amazon.com/dp/B0GR98BZQD" target="_blank" rel="noopener noreferrer">Buy on Amazon →</a><div class="amazon-note">Amazon opens in a new tab.</div></div>
             </div>
           </article>
 
           <article class="book-card">
-            <div class="book-art"><span class="status live">Available</span><img src="/images/roof_damage_claims.png" alt="Roof Damage Claims book cover" /></div>
+            <div class="book-art"><span class="status">Coming Soon</span><img src="/images/rental-property-claims-edition.jpg" alt="Rental Property Claims Edition book cover" /></div>
             <div class="book-body">
-              <h3>Roof Damage Claims</h3>
-              <div class="hook">Learn what is storm damage and what is not.</div>
-              <p>Focused help for storm damage, wear-and-tear disputes, inspections, depreciation, supplements, and roof-related coverage issues.</p>
-              <div class="book-actions"><a class="amazon-btn" href="https://www.amazon.com/dp/B0GY8SBXGC/ref=tmm_pap_swatch_0" target="_blank" rel="noopener noreferrer">Buy on Amazon →</a><div class="amazon-note">Amazon opens in a new tab.</div></div>
+              <h3>Rental Property Claims Edition</h3>
+              <div class="hook">What Rental Property Owners Need to Know to Protect, Document, and Navigate Property Claims</div>
+              <p>A working guide for rental property owners: documenting building damage, handling tenant communication, tracking repairs, and understanding loss-of-rent coverage after a covered loss.</p>
+              <div class="book-actions"><div class="coming-btn">Coming Soon</div></div>
             </div>
           </article>
 
           <article class="book-card">
-            <div class="book-art"><span class="status">Coming Soon</span><img src="/images/water_damage.png" alt="Water Damage Claims book cover" /></div>
+            <div class="book-art"><span class="status">Coming Soon</span><img src="/images/realtors-edition.jpg" alt="Realtors Edition book cover" /></div>
             <div class="book-body">
-              <h3>Water Damage Claims</h3>
-              <div class="hook">Understand mitigation, dry-out, and payment issues.</div>
-              <p>Detailed explanations of sudden and accidental water losses, mitigation, dry-out, mold concerns, exclusions, and scope review.</p>
+              <h3>Realtors Edition</h3>
+              <div class="hook">What Realtors Need to Know, Advise, and Do When Insurance Claims Impact a Property</div>
+              <p>Helps real estate professionals understand the insurance claims that can affect a property during a sale — claim timelines, documentation, repairs, and the issues that can delay a closing.</p>
+              <div class="book-actions"><div class="coming-btn">Coming Soon</div></div>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <div class="book-art"><span class="status">Coming Soon</span><img src="/images/new-home-buyers-edition.jpg" alt="New Home Buyer's Edition book cover" /></div>
+            <div class="book-body">
+              <h3>New Home Buyer&#8217;s Edition</h3>
+              <div class="hook">What New Home Buyers Need to Know Before They Buy, Protect, and Navigate Property Claims</div>
+              <p>Insurance preparation that starts before closing: what buyers should know about coverage, inspections, and a home's claims history — and how to protect the home from day one.</p>
               <div class="book-actions"><div class="coming-btn">Coming Soon</div></div>
             </div>
           </article>
@@ -225,8 +354,7 @@
               <div class="book-actions"><div class="coming-btn">Coming Soon</div></div>
             </div>
           </article>
-        </div>
-      </div>
+        </div></div>
     </section>
 
     <section class="book-purpose">
