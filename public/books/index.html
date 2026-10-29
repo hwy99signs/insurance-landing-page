@@ -70,7 +70,7 @@
     .book-card{background:white;border:1px solid #e0e6ee;border-radius:24px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;position:relative}
     .book-art{height:390px;background:linear-gradient(145deg,#e8edf4,#fff);display:flex;align-items:center;justify-content:center;padding:24px;position:relative}
     .book-art img{height:100%;width:100%;object-fit:contain;filter:drop-shadow(0 18px 22px rgba(4,20,40,.20))}
-    .status{position:absolute;top:18px;right:18px;background:var(--navy);color:var(--gold-light);font-size:.72rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;padding:8px 11px;border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+    .status{position:absolute;top:18px;right:18px;z-index:2;background:var(--navy);color:var(--gold-light);font-size:.72rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;padding:8px 11px;border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.18)}
     .status.live{background:var(--gold);color:var(--navy)}
     .book-body{padding:26px;display:flex;flex-direction:column;flex:1}
     .book-body h3{color:var(--navy);font-size:1.35rem;line-height:1.2;margin-bottom:10px}
@@ -80,7 +80,7 @@
     .amazon-btn{background:var(--gold-light);color:var(--navy);padding:13px 16px;border-radius:12px;font-weight:900;text-align:center}
     .amazon-btn:hover{background:var(--gold)}
     .coming-btn{background:#eef2f7;color:#7a8493;padding:13px 16px;border-radius:12px;font-weight:900;text-align:center;cursor:default}
-    .book-video{margin-top:16px}
+    .book-video{margin-top:4px;margin-bottom:20px}
     .book-video video{width:100%;aspect-ratio:9/16;max-height:430px;object-fit:contain;background:var(--navy);border-radius:12px;display:block}
     .amazon-note{font-size:.78rem;color:#8a93a1;text-align:center}
 
@@ -280,8 +280,8 @@ a[href^="mailto:"]{overflow-wrap:anywhere}
               <h3>Roof Damage Claims</h3>
               <div class="hook">What Homeowners Need to Know, Document, and Do After Roof Damage</div>
               <p>Focused help for storm damage, wear-and-tear disputes, inspections, depreciation, supplements, and roof-related coverage issues.</p>
-              <div class="book-actions"><a class="amazon-btn" href="https://www.amazon.com/dp/B0GY8SBXGC/ref=tmm_pap_swatch_0" target="_blank" rel="noopener noreferrer">Buy on Amazon →</a><div class="amazon-note">Amazon opens in a new tab.</div></div>
               <div class="book-video"><video controls preload="metadata" playsinline poster="/images/roof-damage-claims.jpg" src="/videos/roof-damage-claims-promo.mp4" aria-label="Roof Damage Claims book video"></video></div>
+              <div class="book-actions"><a class="amazon-btn" href="https://www.amazon.com/dp/B0GY8SBXGC/ref=tmm_pap_swatch_0" target="_blank" rel="noopener noreferrer">Buy on Amazon →</a><div class="amazon-note">Amazon opens in a new tab.</div></div>
             </div>
           </article>
 
