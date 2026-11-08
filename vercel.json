@@ -27,5 +27,11 @@
       "destination": "https://www.theinsuranceclaimsguide.com/books/",
       "permanent": true
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/favicon.ico",
+      "destination": "/favicon.svg"
+    }
   ]
 }
